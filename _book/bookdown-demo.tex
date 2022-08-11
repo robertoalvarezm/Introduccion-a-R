@@ -139,23 +139,24 @@
 \hypertarget{intro}{%
 \chapter{Introducción a R}\label{intro}}
 
-R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:
+R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
+Las principales ventajas del uso de R son:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Software libre.
+  Es software libre.
 \item
-  Facilidad para el manejo y almacenamiento de datos.
+  Su facilidad para el manejo y almacenamiento de datos.
 \item
-  Un conjunto de operadores para el cálculo de vectores y matrices.
+  Es un conjunto de operadores para el cálculo de vectores y matrices.
 \item
-  Una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
+  Es una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
 \item
-  Multitud de facilidades gráficas de altísima calidad
+  Posee un multitud de facilidades gráficas de altísima calidad
 \item
-  Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.
+  Es un lenguaje de programación (muy) poderoso con muchas librerías , bibliotecas más porpiamente dicho, especializadas disponibles.
 \item
   La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
 \item
@@ -165,9 +166,9 @@ R es un entorno integrado para el manejo de datos, el cálculo, la generación d
 \hypertarget{paquetes-o-bibliotecas}{%
 \section{Paquetes o bibliotecas}\label{paquetes-o-bibliotecas}}
 
-Las funciones especializadas de R se guardan en paquetes \emph{(packages)} que deben ser invocados ANTES de llamar a una función del paquete
+Las funciones especializadas de R se guardan en bibliotecas \emph{(packages)} que deben ser invocados ANTES de llamar a una función de la biblioteca
 
-Una manera de instalar paquetes es mediante el repositorio \href{https://cran.r-project.org/}{CRAN}.
+Una manera de instalar bibliotecas es mediante el repositorio por defecto de R que es \href{https://cran.r-project.org/}{CRAN}.
 
 Navega por CRAN y encuentra algunos paquetes que podrían interesarte. Hay miles y cada día aumentan.
 
@@ -667,10 +668,24 @@ Podemos utilizar el comando \texttt{apropos()} para encontrar todo lo relacionad
 ## [5] "solve.default" "solve.qr"
 \end{verbatim}
 
+\hypertarget{sesiones-interactivas}{%
+\subsection{Sesiones interactivas}\label{sesiones-interactivas}}
+
+En R también podmeos generar elementos interactivos con la bilioteca \textbf{shiny}
+
+\begin{verbatim}
+## 
+## Listening on http://127.0.0.1:3354
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf}
+
 \hypertarget{expresiones-y-asignaciones}{%
 \section{Expresiones y asignaciones}\label{expresiones-y-asignaciones}}
 
-Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variables; las segundas se asignan y guardan en una variable
+Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variable; las segundas, se asignan y guardan en una variable
+
+\textbf{Expresión:}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -679,9 +694,11 @@ Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -2.68441265 -1.57479006  0.04302292  0.32532385 -0.38860655  0.50258835
-##  [7]  0.41127946 -0.91900363 -1.86439492 -2.75370918
+##  [1] -1.5722350  0.9601945 -0.1204486 -2.0042524  0.9381918 -0.1460520
+##  [7]  1.3172614 -1.0901390 -1.0973922  0.1347918
 \end{verbatim}
+
+\textbf{Asignación}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -696,8 +713,8 @@ Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.46336647 -0.06714359 -0.77713398 -0.30867071  0.59332292 -0.29435430
-##  [7] -0.58894352 -0.20337736 -1.24652853 -0.56647882
+##  [1] -0.3588845 -0.3139275 -0.5939401  2.0301381 -0.1833358  0.6998264
+##  [7] -0.5824878 -0.5775879  0.9772605 -0.4070146
 \end{verbatim}
 
 \begin{figure}
@@ -1491,7 +1508,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -3.645031
+## [1] -3.359911
 \end{verbatim}
 
 \begin{Shaded}
@@ -1501,7 +1518,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.957493
+## [1] 3.871783
 \end{verbatim}
 
 \begin{Shaded}
@@ -1511,7 +1528,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -3.645031  2.957493
+## [1] -3.359911  3.871783
 \end{verbatim}
 
 \begin{Shaded}
@@ -1521,7 +1538,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -4.064324
+## [1] 45.23038
 \end{verbatim}
 
 \begin{Shaded}
@@ -1531,7 +1548,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.004064324
+## [1] 0.04523038
 \end{verbatim}
 
 \begin{Shaded}
@@ -1541,7 +1558,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0001350258
+## [1] 0.0339923
 \end{verbatim}
 
 \begin{Shaded}
@@ -1551,7 +1568,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.02137
+## [1] 0.9882187
 \end{verbatim}
 
 \begin{Shaded}
@@ -1561,8 +1578,8 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-##            0%           25%           50%           75%          100% 
-## -3.6450309189 -0.6896738934  0.0001350258  0.6773947713  2.9574933279
+##         0%        25%        50%        75%       100% 
+## -3.3599110 -0.6131977  0.0339923  0.6845514  3.8717825
 \end{verbatim}
 
 Para \texttt{unique()} y \texttt{sort()} conviene tener elementos discretos más que continuos
@@ -1586,7 +1603,7 @@ Para \texttt{unique()} y \texttt{sort()} conviene tener elementos discretos más
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  8  3  6  7  9  5  2  1  4 10
+##  [1]  9  3  5  2  6  7  1  8 10  4
 \end{verbatim}
 
 \begin{Shaded}
@@ -1611,7 +1628,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1619,7 +1636,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-2.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1627,7 +1644,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-3.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-3.pdf}
 
 \hypertarget{vectores-con-nombre}{%
 \section{Vectores con nombre}\label{vectores-con-nombre}}

@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Introducción a R | Notas de R</title>
 <meta name="author" content="Roberto Álvarez">
-<meta name="description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<meta name="description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
 <meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Introducción a R | Notas de R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<meta property="og:description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Introducción a R | Notas de R">
-<meta name="twitter:description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<meta name="twitter:description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -59,14 +59,15 @@
 <h1>
 <span class="header-section-number">2</span> Introducción a R<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
 </h1>
-<p>R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:</p>
+<p>R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
+Las principales ventajas del uso de R son:</p>
 <ol style="list-style-type: decimal">
-<li>Software libre.</li>
-<li>Facilidad para el manejo y almacenamiento de datos.</li>
-<li>Un conjunto de operadores para el cálculo de vectores y matrices.</li>
-<li>Una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.</li>
-<li>Multitud de facilidades gráficas de altísima calidad</li>
-<li>Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.</li>
+<li>Es software libre.</li>
+<li>Su facilidad para el manejo y almacenamiento de datos.</li>
+<li>Es un conjunto de operadores para el cálculo de vectores y matrices.</li>
+<li>Es una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.</li>
+<li>Posee un multitud de facilidades gráficas de altísima calidad</li>
+<li>Es un lenguaje de programación (muy) poderoso con muchas librerías , bibliotecas más porpiamente dicho, especializadas disponibles.</li>
 <li>La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.</li>
 <li><strong>Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar por la licencia…), sin embargo es más díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.</strong></li>
 </ol>
@@ -74,8 +75,8 @@
 <h2>
 <span class="header-section-number">2.1</span> Paquetes o bibliotecas<a class="anchor" aria-label="anchor" href="#paquetes-o-bibliotecas"><i class="fas fa-link"></i></a>
 </h2>
-<p>Las funciones especializadas de R se guardan en paquetes <em>(packages)</em> que deben ser invocados ANTES de llamar a una función del paquete</p>
-<p>Una manera de instalar paquetes es mediante el repositorio <a href="https://cran.r-project.org/">CRAN</a>.</p>
+<p>Las funciones especializadas de R se guardan en bibliotecas <em>(packages)</em> que deben ser invocados ANTES de llamar a una función de la biblioteca</p>
+<p>Una manera de instalar bibliotecas es mediante el repositorio por defecto de R que es <a href="https://cran.r-project.org/">CRAN</a>.</p>
 <p>Navega por CRAN y encuentra algunos paquetes que podrían interesarte. Hay miles y cada día aumentan.</p>
 <p>Para saber qué paquetes se tienen instalados en
 tu máquina teclea la función library()</p>
@@ -418,35 +419,46 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">apropos</a></span><span class="op">(</span><span class="st">"solve"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "backsolve"     "forwardsolve"  "qr.solve"      "solve"        
 ## [5] "solve.default" "solve.qr"</code></pre>
+<div id="sesiones-interactivas" class="section level3" number="2.2.1">
+<h3>
+<span class="header-section-number">2.2.1</span> Sesiones interactivas<a class="anchor" aria-label="anchor" href="#sesiones-interactivas"><i class="fas fa-link"></i></a>
+</h3>
+<p>En R también podmeos generar elementos interactivos con la bilioteca <strong>shiny</strong></p>
+<pre><code>## 
+## Listening on http://127.0.0.1:8531</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+</div>
 </div>
 <div id="expresiones-y-asignaciones" class="section level2" number="2.3">
 <h2>
 <span class="header-section-number">2.3</span> Expresiones y asignaciones<a class="anchor" aria-label="anchor" href="#expresiones-y-asignaciones"><i class="fas fa-link"></i></a>
 </h2>
-<p>Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variables; las segundas se asignan y guardan en una variable</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<p>Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variable; las segundas, se asignan y guardan en una variable</p>
+<p><strong>Expresión:</strong></p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1] -2.98601177 -0.17742741  0.34930748 -0.09444034  0.82148932  0.49167940
-##  [7] -0.67743814  0.39009886  0.50747650 -0.15119897</code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##  [1] -0.28321549  0.77134142  0.25811043  0.86608512 -0.04218194  1.35316586
+##  [7]  0.16165827  0.84105643 -0.23252198  0.57454590</code></pre>
+<p><strong>Asignación</strong></p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span></span></code></pre></div>
-<pre><code>##  [1]  0.3431890  0.7431792 -2.1574953  0.6528960 -0.0422475  0.7843380
-##  [7] -0.9865111 -0.6029693  0.2387178  1.6727859</code></pre>
+<pre><code>##  [1] -0.1105591  0.3726759 -0.3245786  0.8872796 -1.8863371 -0.2814883
+##  [7]  0.9057933  0.3936210  1.5512628  2.1525894</code></pre>
 <div class="figure">
 <img src="equals-sign-assignment-operator-imgflip-com-going-through-data-structures-and-47188178.png" alt=""><p class="caption">Operado de asignación. Evitar el uso del igual</p>
 </div>
 <p>R distingue entre mayúsculas y minúsculas, así las siguientes variables contienen valores distintos</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></code></pre></div>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fl">6</span></span></code></pre></div>
 <p>Los comandos pueden separarse por <code>;</code> o - mejor opción- por un salto de línea</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span>; <span class="va">b</span> <span class="op">&lt;-</span><span class="fl">5</span></span></code></pre></div>
 <p>también pueden definirse asignaciones en más de una línea</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">pi</span> <span class="op">+</span> <span class="fl">12</span></span></code></pre></div>
 </div>
@@ -455,16 +467,16 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 <span class="header-section-number">2.4</span> Movimiento entre directorios<a class="anchor" aria-label="anchor" href="#movimiento-entre-directorios"><i class="fas fa-link"></i></a>
 </h2>
 <p>Para saber en qué directorio estamos tecleamos</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "/Users/robertoalvarez/Dropbox/UAQ/Bioinformatica/Introduccion-a-R.github.io"</code></pre>
 <p>Para cambiar de directorio utilizamos <code>setwd("direccion_a_la_que_quieres_ir")</code></p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"~"</span><span class="op">)</span></span></code></pre></div>
 <p>También podemos usar los comandos de bash dentro de R, utilizando la función <code><a href="https://rdrr.io/r/base/system.html">system()</a></code></p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"ls -la"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"ls -la"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"pwd"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="importante" class="section level2" number="2.5">
@@ -479,22 +491,22 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 </h2>
 <p>Se puede sumar, restar, multiplicar,dividir, “exponenciar” y calcular la raíz cuadrada.
 Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code>, <code>/</code>,<code>**</code> o <code>^</code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 20.14159</code></pre>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">-</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 10.14159</code></pre>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">*</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 75.70796</code></pre>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">**</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 795898.7</code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">^</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 795898.7</code></pre>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.89122</code></pre>
 </div>
@@ -532,16 +544,16 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 <span class="header-section-number">2.8</span> Tipos de datos lógicos o booleanos<a class="anchor" aria-label="anchor" href="#tipos-de-datos-l%C3%B3gicos-o-booleanos"><i class="fas fa-link"></i></a>
 </h2>
 <p>Estos tipos de datos <strong>sólo</strong> contienen información <code>TRUE</code> o <code>FALSE</code>. Sirven para evaluar expresiones de =, &lt;, &gt; y pueden utilizarse para obtener los elementos de un vector que cumplan con la característica deseada.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&lt;</span> <span class="fl">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">==</span> <span class="fl">0</span>  <span class="co"># Es igual a</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">!=</span> <span class="fl">0</span>    <span class="co"># NO es igual a</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">&lt;=</span> <span class="fl">0</span>    <span class="co">#Menor o igual </span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Dentro de R un valor lógico <code>TRUE</code> equivale a 1 y <code>FALSE</code> equivale a 0, por lo tanto para contar cuántos <code>TRUE</code>s hay podemos hacer una suma:</p>
@@ -551,7 +563,7 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 <span class="header-section-number">2.8.1</span> Caracter<a class="anchor" aria-label="anchor" href="#caracter"><i class="fas fa-link"></i></a>
 </h3>
 <p>Son <em>strings</em> de texto. Se distingue porque los elementos van entre comillas (cada uno). Puede ser desde un sólo caracter hasta oraciones completas. Puede parecer que contienen números, pero las comillaa indican que serán tratados como texto. Podemos subsetearlos por su índice o buscando literalmente el texto.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">&lt;-</span> <span class="st">"La candente mañana de febrero en que Beatriz Viterbo murió, después de una imperiosa agonía que no se rebajó un solo instante ni al sentimentalismo ni al miedo"</span></span></code></pre></div>
 </div>
 <div id="enteros-y-números-numeric" class="section level3" number="2.8.2">
@@ -560,11 +572,11 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 </h3>
 <p>R por default representa los números como <code>numeric</code>, NO <code>integer</code>. Estos tipos son dos formas diferentes en las cuales las computadoras pueden guardar los números y hacer operaciones matemáticas con ellos. Por lo común esto no importa, pero puede ser relevante para algunas funciones de Bioconductor, por ejemplo ya que el tamaño máximo de un <code>integer</code> en R es ligeramente más chico que el tamaño del genoma humano.</p>
 <p>¿Cómo revisar si un objeto es numeric o entero?</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "integer"</code></pre>
@@ -588,7 +600,9 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#intro"><span class="header-section-number">2</span> Introducción a R</a></li>
 <li><a class="nav-link" href="#paquetes-o-bibliotecas"><span class="header-section-number">2.1</span> Paquetes o bibliotecas</a></li>
-<li><a class="nav-link" href="#ayuda-en-r"><span class="header-section-number">2.2</span> Ayuda en R</a></li>
+<li>
+<a class="nav-link" href="#ayuda-en-r"><span class="header-section-number">2.2</span> Ayuda en R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#sesiones-interactivas"><span class="header-section-number">2.2.1</span> Sesiones interactivas</a></li></ul>
+</li>
 <li><a class="nav-link" href="#expresiones-y-asignaciones"><span class="header-section-number">2.3</span> Expresiones y asignaciones</a></li>
 <li><a class="nav-link" href="#movimiento-entre-directorios"><span class="header-section-number">2.4</span> Movimiento entre directorios</a></li>
 <li><a class="nav-link" href="#importante"><span class="header-section-number">2.5</span> Importante</a></li>
