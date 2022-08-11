@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Introducción a R | Notas de R</title>
+<meta name="author" content="Roberto Álvarez">
+<meta name="description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Introducción a R | Notas de R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Introducción a R | Notas de R">
+<meta name="twitter:description" content="R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son: Software libre. Facilidad para el...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Notas de R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Acá empieza</a></li>
+<li><a class="active" href="intro.html"><span class="header-section-number">2</span> Introducción a R</a></li>
+<li><a class="" href="vectores.html"><span class="header-section-number">3</span> Vectores</a></li>
+<li><a class="" href="matrices.html"><span class="header-section-number">4</span> Matrices</a></li>
+<li><a class="" href="Estructuras_de_seleccion.html"><span class="header-section-number">5</span> Estructuras de selección</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="intro" class="section level1">
+<h1>
+<span class="header-section-number">2</span> Introducción a R<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
+</h1>
+<p>R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:</p>
+<ol style="list-style-type: decimal">
+<li>Software libre.</li>
+<li>Facilidad para el manejo y almacenamiento de datos.</li>
+<li>Un conjunto de operadores para el cálculo de vectores y matrices.</li>
+<li>Una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.</li>
+<li>Multitud de facilidades gráficas de altísima calidad</li>
+<li>Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.</li>
+<li>La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.</li>
+<li><strong>Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar…), sin embargo es más díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.</strong></li>
+</ol>
+<div id="paquetes-o-bibliotecas" class="section level2">
+<h2>
+<span class="header-section-number">2.1</span> Paquetes o bibliotecas<a class="anchor" aria-label="anchor" href="#paquetes-o-bibliotecas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Las funciones especializadas de R se guardan en paquetes <em>(packages)</em> que deben ser invocados ANTES de llamar a una función del paquete</p>
+<p>Una manera de instalar paquetes es mediante el repositorio <a href="https://cran.r-project.org/">CRAN</a>.</p>
+<p>Navega por CRAN y encuentra algunos paquetes que podrían interesarte. Hay miles y cada día aumentan.</p>
+<p>Para saber qué paquetes se tienen instalados en
+tu máquina teclea la función library()</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Para cargar un paquete en particular deben teclear, siempre y cuando ya esté instalado</p>
+<p><code><a href="https://rdrr.io/r/base/library.html">library(nombre_de_paquete)</a></code></p>
+<p>Por ejemplo</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/talgalili/gplots">gplots</a></span><span class="op">)</span>  </code></pre></div>
+<pre><code>## 
+## Attaching package: 'gplots'</code></pre>
+<pre><code>## The following object is masked from 'package:stats':
+## 
+##     lowess</code></pre>
+<p>Para visualizar los paquetes ya cargados tecleamos</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] ".GlobalEnv"        "package:gplots"    "package:stats"    
+##  [4] "package:graphics"  "package:grDevices" "package:utils"    
+##  [7] "package:datasets"  "package:methods"   "Autoloads"        
+## [10] "package:base"</code></pre>
+<p>Para visualizar las funciones dentro de un paquete en particular se utiliza</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] "angleAxis"      "balloonplot"    "bandplot"       "barplot2"      
+##  [5] "bluered"        "boxplot2"       "ci2d"           "col2hex"       
+##  [9] "colorpanel"     "greenred"       "heatmap.2"      "hist2d"        
+## [13] "lmplot2"        "lowess"         "ooplot"         "overplot"      
+## [17] "panel.overplot" "plot.venn"      "plotCI"         "plotLowess"    
+## [21] "plotmeans"      "qqnorm.aov"     "redblue"        "redgreen"      
+## [25] "reorder.factor" "residplot"      "rich.colors"    "sinkplot"      
+## [29] "smartlegend"    "space"          "textplot"       "venn"          
+## [33] "wapply"</code></pre>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/demo.html">demo</a></span><span class="op">(</span><span class="va">graphics</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## 
+##  demo(graphics)
+##  ---- ~~~~~~~~
+## 
+## &gt; #  Copyright (C) 1997-2009 The R Core Team
+## &gt; 
+## &gt; require(datasets)
+## 
+## &gt; require(grDevices); require(graphics)
+## 
+## &gt; ## Here is some code which illustrates some of the differences between
+## &gt; ## R and S graphics capabilities.  Note that colors are generally specified
+## &gt; ## by a character string name (taken from the X11 rgb.txt file) and that line
+## &gt; ## textures are given similarly.  The parameter "bg" sets the background
+## &gt; ## parameter for the plot and there is also an "fg" parameter which sets
+## &gt; ## the foreground color.
+## &gt; 
+## &gt; 
+## &gt; x &lt;- stats::rnorm(50)
+## 
+## &gt; opar &lt;- par(bg = "white")
+## 
+## &gt; plot(x, ann = FALSE, type = "n")</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<pre><code>## 
+## &gt; abline(h = 0, col = gray(.90))
+## 
+## &gt; lines(x, col = "green4", lty = "dotted")
+## 
+## &gt; points(x, bg = "limegreen", pch = 21)
+## 
+## &gt; title(main = "Simple Use of Color In a Plot",
+## +       xlab = "Just a Whisper of a Label",
+## +       col.main = "blue", col.lab = gray(.8),
+## +       cex.main = 1.2, cex.lab = 1.0, font.main = 4, font.lab = 3)
+## 
+## &gt; ## A little color wheel.    This code just plots equally spaced hues in
+## &gt; ## a pie chart.    If you have a cheap SVGA monitor (like me) you will
+## &gt; ## probably find that numerically equispaced does not mean visually
+## &gt; ## equispaced.  On my display at home, these colors tend to cluster at
+## &gt; ## the RGB primaries.  On the other hand on the SGI Indy at work the
+## &gt; ## effect is near perfect.
+## &gt; 
+## &gt; par(bg = "gray")
+## 
+## &gt; pie(rep(1,24), col = rainbow(24), radius = 0.9)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-2.png" width="672"></div>
+<pre><code>## 
+## &gt; title(main = "A Sample Color Wheel", cex.main = 1.4, font.main = 3)
+## 
+## &gt; title(xlab = "(Use this as a test of monitor linearity)",
+## +       cex.lab = 0.8, font.lab = 3)
+## 
+## &gt; ## We have already confessed to having these.  This is just showing off X11
+## &gt; ## color names (and the example (from the postscript manual) is pretty "cute".
+## &gt; 
+## &gt; pie.sales &lt;- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+## 
+## &gt; names(pie.sales) &lt;- c("Blueberry", "Cherry",
+## +              "Apple", "Boston Cream", "Other", "Vanilla Cream")
+## 
+## &gt; pie(pie.sales,
+## +     col = c("purple","violetred1","green3","cornsilk","cyan","white"))</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-3.png" width="672"></div>
+<pre><code>## 
+## &gt; title(main = "January Pie Sales", cex.main = 1.8, font.main = 1)
+## 
+## &gt; title(xlab = "(Don't try this at home kids)", cex.lab = 0.8, font.lab = 3)
+## 
+## &gt; ## Boxplots:  I couldn't resist the capability for filling the "box".
+## &gt; ## The use of color seems like a useful addition, it focuses attention
+## &gt; ## on the central bulk of the data.
+## &gt; 
+## &gt; par(bg="cornsilk")
+## 
+## &gt; n &lt;- 10
+## 
+## &gt; g &lt;- gl(n, 100, n*100)
+## 
+## &gt; x &lt;- rnorm(n*100) + sqrt(as.numeric(g))
+## 
+## &gt; boxplot(split(x,g), col="lavender", notch=TRUE)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-4.png" width="672"></div>
+<pre><code>## 
+## &gt; title(main="Notched Boxplots", xlab="Group", font.main=4, font.lab=1)
+## 
+## &gt; ## An example showing how to fill between curves.
+## &gt; 
+## &gt; par(bg="white")
+## 
+## &gt; n &lt;- 100
+## 
+## &gt; x &lt;- c(0,cumsum(rnorm(n)))
+## 
+## &gt; y &lt;- c(0,cumsum(rnorm(n)))
+## 
+## &gt; xx &lt;- c(0:n, n:0)
+## 
+## &gt; yy &lt;- c(x, rev(y))
+## 
+## &gt; plot(xx, yy, type="n", xlab="Time", ylab="Distance")</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-5.png" width="672"></div>
+<pre><code>## 
+## &gt; polygon(xx, yy, col="gray")
+## 
+## &gt; title("Distance Between Brownian Motions")
+## 
+## &gt; ## Colored plot margins, axis labels and titles.    You do need to be
+## &gt; ## careful with these kinds of effects.    It's easy to go completely
+## &gt; ## over the top and you can end up with your lunch all over the keyboard.
+## &gt; ## On the other hand, my market research clients love it.
+## &gt; 
+## &gt; x &lt;- c(0.00, 0.40, 0.86, 0.85, 0.69, 0.48, 0.54, 1.09, 1.11, 1.73, 2.05, 2.02)
+## 
+## &gt; par(bg="lightgray")
+## 
+## &gt; plot(x, type="n", axes=FALSE, ann=FALSE)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-6.png" width="672"></div>
+<pre><code>## 
+## &gt; usr &lt;- par("usr")
+## 
+## &gt; rect(usr[1], usr[3], usr[2], usr[4], col="cornsilk", border="black")
+## 
+## &gt; lines(x, col="blue")
+## 
+## &gt; points(x, pch=21, bg="lightcyan", cex=1.25)
+## 
+## &gt; axis(2, col.axis="blue", las=1)
+## 
+## &gt; axis(1, at=1:12, lab=month.abb, col.axis="blue")
+## 
+## &gt; box()
+## 
+## &gt; title(main= "The Level of Interest in R", font.main=4, col.main="red")
+## 
+## &gt; title(xlab= "1996", col.lab="red")
+## 
+## &gt; ## A filled histogram, showing how to change the font used for the
+## &gt; ## main title without changing the other annotation.
+## &gt; 
+## &gt; par(bg="cornsilk")
+## 
+## &gt; x &lt;- rnorm(1000)
+## 
+## &gt; hist(x, xlim=range(-4, 4, x), col="lavender", main="")</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-7.png" width="672"></div>
+<pre><code>## 
+## &gt; title(main="1000 Normal Random Variates", font.main=3)
+## 
+## &gt; ## A scatterplot matrix
+## &gt; ## The good old Iris data (yet again)
+## &gt; 
+## &gt; pairs(iris[1:4], main="Edgar Anderson's Iris Data", font.main=4, pch=19)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-8.png" width="672"></div>
+<pre><code>## 
+## &gt; pairs(iris[1:4], main="Edgar Anderson's Iris Data", pch=21,
+## +       bg = c("red", "green3", "blue")[unclass(iris$Species)])</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-9.png" width="672"></div>
+<pre><code>## 
+## &gt; ## Contour plotting
+## &gt; ## This produces a topographic map of one of Auckland's many volcanic "peaks".
+## &gt; 
+## &gt; x &lt;- 10*1:nrow(volcano)
+## 
+## &gt; y &lt;- 10*1:ncol(volcano)
+## 
+## &gt; lev &lt;- pretty(range(volcano), 10)
+## 
+## &gt; par(bg = "lightcyan")
+## 
+## &gt; pin &lt;- par("pin")
+## 
+## &gt; xdelta &lt;- diff(range(x))
+## 
+## &gt; ydelta &lt;- diff(range(y))
+## 
+## &gt; xscale &lt;- pin[1]/xdelta
+## 
+## &gt; yscale &lt;- pin[2]/ydelta
+## 
+## &gt; scale &lt;- min(xscale, yscale)
+## 
+## &gt; xadd &lt;- 0.5*(pin[1]/scale - xdelta)
+## 
+## &gt; yadd &lt;- 0.5*(pin[2]/scale - ydelta)
+## 
+## &gt; plot(numeric(0), numeric(0),
+## +      xlim = range(x)+c(-1,1)*xadd, ylim = range(y)+c(-1,1)*yadd,
+## +      type = "n", ann = FALSE)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-10.png" width="672"></div>
+<pre><code>## 
+## &gt; usr &lt;- par("usr")
+## 
+## &gt; rect(usr[1], usr[3], usr[2], usr[4], col="green3")
+## 
+## &gt; contour(x, y, volcano, levels = lev, col="yellow", lty="solid", add=TRUE)
+## 
+## &gt; box()
+## 
+## &gt; title("A Topographic Map of Maunga Whau", font= 4)
+## 
+## &gt; title(xlab = "Meters North", ylab = "Meters West", font= 3)
+## 
+## &gt; mtext("10 Meter Contour Spacing", side=3, line=0.35, outer=FALSE,
+## +       at = mean(par("usr")[1:2]), cex=0.7, font=3)
+## 
+## &gt; ## Conditioning plots
+## &gt; 
+## &gt; par(bg="cornsilk")
+## 
+## &gt; coplot(lat ~ long | depth, data = quakes, pch = 21, bg = "green3")</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-11.png" width="672"></div>
+<pre><code>## 
+## &gt; par(opar)</code></pre>
+</div>
+<div id="ayuda-en-r" class="section level2">
+<h2>
+<span class="header-section-number">2.2</span> Ayuda en R<a class="anchor" aria-label="anchor" href="#ayuda-en-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>help(nombre_comando) o ?nombre_comando</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">solve</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">?</span><span class="va">solve</span></code></pre></div>
+<p>son equivalentes para buscar ayuda sobre el comando solve</p>
+<p>Para buscar ayuda de funciones o palabra reservadas se utilizan comillas</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"for"</span><span class="op">)</span></code></pre></div>
+<p>Para abrir la ayuda genral en un navegador (sólo si tenemos la ayuda en HTML instalada y tenemos conexión a la red) se utiliza</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.start.html">help.start</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
+<pre><code>## If the browser launched by '/usr/bin/open' is already running, it is
+##     *not* restarted, and you must switch to its window.
+## Otherwise, be patient ...</code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"clustering"</span><span class="op">)</span></code></pre></div>
+<p>Si queremos ver ejemplos del uso de los comandos usamos la función ejemplo</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="st">"hclust"</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## hclust&gt; require(graphics)
+## 
+## hclust&gt; ### Example 1: Violent crime rates by US state
+## hclust&gt; 
+## hclust&gt; hc &lt;- hclust(dist(USArrests), "ave")
+## 
+## hclust&gt; plot(hc)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<pre><code>## 
+## hclust&gt; plot(hc, hang = -1)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-2.png" width="672"></div>
+<pre><code>## 
+## hclust&gt; ## Do the same with centroid clustering and *squared* Euclidean distance,
+## hclust&gt; ## cut the tree into ten clusters and reconstruct the upper part of the
+## hclust&gt; ## tree from the cluster centers.
+## hclust&gt; hc &lt;- hclust(dist(USArrests)^2, "cen")
+## 
+## hclust&gt; memb &lt;- cutree(hc, k = 10)
+## 
+## hclust&gt; cent &lt;- NULL
+## 
+## hclust&gt; for(k in 1:10){
+## hclust+   cent &lt;- rbind(cent, colMeans(USArrests[memb == k, , drop = FALSE]))
+## hclust+ }
+## 
+## hclust&gt; hc1 &lt;- hclust(dist(cent)^2, method = "cen", members = table(memb))
+## 
+## hclust&gt; opar &lt;- par(mfrow = c(1, 2))
+## 
+## hclust&gt; plot(hc,  labels = FALSE, hang = -1, main = "Original Tree")</code></pre>
+<pre><code>## 
+## hclust&gt; plot(hc1, labels = FALSE, hang = -1, main = "Re-start from 10 clusters")</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-3.png" width="672"></div>
+<pre><code>## 
+## hclust&gt; par(opar)
+## 
+## hclust&gt; ### Example 2: Straight-line distances among 10 US cities
+## hclust&gt; ##  Compare the results of algorithms "ward.D" and "ward.D2"
+## hclust&gt; 
+## hclust&gt; mds2 &lt;- -cmdscale(UScitiesD)
+## 
+## hclust&gt; plot(mds2, type="n", axes=FALSE, ann=FALSE)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-4.png" width="672"></div>
+<pre><code>## 
+## hclust&gt; text(mds2, labels=rownames(mds2), xpd = NA)
+## 
+## hclust&gt; hcity.D  &lt;- hclust(UScitiesD, "ward.D") # "wrong"
+## 
+## hclust&gt; hcity.D2 &lt;- hclust(UScitiesD, "ward.D2")
+## 
+## hclust&gt; opar &lt;- par(mfrow = c(1, 2))
+## 
+## hclust&gt; plot(hcity.D,  hang=-1)</code></pre>
+<pre><code>## 
+## hclust&gt; plot(hcity.D2, hang=-1)</code></pre>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-11-5.png" width="672"></div>
+<pre><code>## 
+## hclust&gt; par(opar)</code></pre>
+<p>Todo lo anterior requiere que conzocamos el nombre correcto del comando, pero ¿qué pasa si no lo sabemos?
+Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html">apropos()</a></code> para encontrar todo lo relacionado con algún término</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">apropos</a></span><span class="op">(</span><span class="st">"solve"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "backsolve"     "forwardsolve"  "qr.solve"      "solve"        
+## [5] "solve.default" "solve.qr"</code></pre>
+</div>
+<div id="expresiones-y-asignaciones" class="section level2">
+<h2>
+<span class="header-section-number">2.3</span> Expresiones y asignaciones<a class="anchor" aria-label="anchor" href="#expresiones-y-asignaciones"><i class="fas fa-link"></i></a>
+</h2>
+<p>Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variables; las segundas se asignan y guardan en una variable</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1]  0.6017187  0.2023141 -1.4080005  0.9259026 -1.7242915 -0.8435481
+##  [7]  1.6710648 -1.5201832  0.2571741  0.9177981</code></pre>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span></code></pre></div>
+<pre><code>##  [1]  1.1874517  0.9375030  0.1536783  1.3524001  0.9073729  0.0439552
+##  [7]  0.2847067  1.3978037 -3.0449126  0.3560317</code></pre>
+<div class="figure">
+<img src="equals-sign-assignment-operator-imgflip-com-going-through-data-structures-and-47188178.png" alt="Operado de asignación. Evitar el uso del igual"><p class="caption">Operado de asignación. Evitar el uso del igual</p>
+</div>
+<p>R distingue entre mayúsculas y minúsculas, así las siguientes variables contienen valores distintos</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">A</span> <span class="op">&lt;-</span> <span class="fl">6</span></code></pre></div>
+<p>Los comandos pueden separarse por <code>;</code> o - mejor opción- por un salto de línea</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">3</span>; <span class="va">b</span> <span class="op">&lt;-</span><span class="fl">5</span></code></pre></div>
+<p>también pueden definirse asignaciones en más de una línea</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span>
+  <span class="va">pi</span> <span class="op">+</span> <span class="fl">12</span></code></pre></div>
+</div>
+<div id="movimiento-entre-directorios" class="section level2">
+<h2>
+<span class="header-section-number">2.4</span> Movimiento entre directorios<a class="anchor" aria-label="anchor" href="#movimiento-entre-directorios"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para saber en qué directorio estamos tecleamos</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "/Users/robertoalvarez/Dropbox/UAQ/Bioinformatica/Libro_de_R"</code></pre>
+<p>Para cambiar de directorio utilizamos <code><a href="https://rdrr.io/r/base/getwd.html">setwd("direccion_a_la_que_quieres_ir")</a></code></p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"~"</span><span class="op">)</span></code></pre></div>
+<p>También podemos usar los comandos de bash dentro de R, utilizando la función <code><a href="https://rdrr.io/r/base/system.html">system()</a></code></p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"ls -la"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"pwd"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="importante" class="section level2">
+<h2>
+<span class="header-section-number">2.5</span> Importante<a class="anchor" aria-label="anchor" href="#importante"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Como regla general todos los nombres van entre comillas: nombre de carpetas, archivos, de columnas, de renglones,etc.</strong></p>
+</div>
+<div id="operaciones-aritméticas" class="section level2">
+<h2>
+<span class="header-section-number">2.6</span> Operaciones aritméticas<a class="anchor" aria-label="anchor" href="#operaciones-aritm%C3%A9ticas"><i class="fas fa-link"></i></a>
+</h2>
+<p>Se puede sumar, restar, multiplicar,dividir, “exponenciar” y calcular la raíz cuadrada.
+Los operadores son, respectivamente: <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>,<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>,<code><a href="https://rdrr.io/r/base/Arithmetic.html">*</a></code>, <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>,<code>**</code> o <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 20.14159</code></pre>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">-</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 10.14159</code></pre>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">*</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 75.70796</code></pre>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">**</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 795898.7</code></pre>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a</span> <span class="op">^</span> <span class="va">b</span></code></pre></div>
+<pre><code>## [1] 795898.7</code></pre>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 3.89122</code></pre>
+</div>
+<div id="prioridad-en-las-operaciones" class="section level2">
+<h2>
+<span class="header-section-number">2.7</span> Prioridad en las operaciones<a class="anchor" aria-label="anchor" href="#prioridad-en-las-operaciones"><i class="fas fa-link"></i></a>
+</h2>
+<p>Las operaciones se efectuan en el siguiente orden:</p>
+<ol style="list-style-type: decimal">
+<li>izquierda a derecha</li>
+<li>sqrt() y ** , ^</li>
+<li>"*" y /</li>
+<li>“+” y -</li>
+<li>&lt;-</li>
+</ol>
+<p>Este orden se altera si se presenta un paréntesis. En ese caso la operación dentro del paréntesis es la que se realiza primero.</p>
+<p>Ejemplos</p>
+<p>4 + 2 *3 = 4 + 6 = 10</p>
+<p>4-15/3 +3^2 +sqrt(9)= 4-15/3 + 9 +3 = 4-5+12=13</p>
+<p>4-(3+7)^2 + (2+3)/5=4-100+5/5=-95</p>
+<div id="ejercicios" class="section level3">
+<h3>
+<span class="header-section-number">2.7.1</span> Ejercicios<a class="anchor" aria-label="anchor" href="#ejercicios"><i class="fas fa-link"></i></a>
+</h3>
+<p>Resuelve en un pedazo de papel primero para saber cuál sería el resultado de las siguientes operaciones aritméticas. Después comprueba tu resultado tecleandolas en R</p>
+<ol style="list-style-type: decimal">
+<li>1 + 2*3 +3 +15/3</li>
+<li>4-15/3 +3^2 +3*sqrt(81)</li>
+<li>40-(4+3)^2 + (10-5)/3</li>
+</ol>
+</div>
+</div>
+<div id="tipos-de-datos-lógicos-o-booleanos" class="section level2">
+<h2>
+<span class="header-section-number">2.8</span> Tipos de datos lógicos o booleanos<a class="anchor" aria-label="anchor" href="#tipos-de-datos-l%C3%B3gicos-o-booleanos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Estos tipos de datos <strong>sólo</strong> contienen información <code>TRUE</code> o <code>FALSE</code>. Sirven para evaluar expresiones de =, &lt;, &gt; y pueden utilizarse para obtener los elementos de un vector que cumplan con la característica deseada.</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">&lt;</span> <span class="fl">5</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">10</span> <span class="op">==</span> <span class="fl">0</span>  <span class="co"># Es igual a</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">10</span> <span class="op">!=</span> <span class="fl">0</span>    <span class="co"># NO es igual a</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">10</span> <span class="op">&lt;=</span> <span class="fl">0</span>    <span class="co">#Menor o igual </span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Dentro de R un valor lógico <code>TRUE</code> equivale a 1 y <code>FALSE</code> equivale a 0, por lo tanto para contar cuántos <code>TRUE</code>s hay podemos hacer una suma:</p>
+<p><strong>Ejercicio</strong> utiliza una sola líndea de R para averiguar si el logaritmo base de 10 de 20 es menor que la raiz cuadrada de 4.</p>
+<div id="caracter" class="section level3">
+<h3>
+<span class="header-section-number">2.8.1</span> Caracter<a class="anchor" aria-label="anchor" href="#caracter"><i class="fas fa-link"></i></a>
+</h3>
+<p>Son <em>strings</em> de texto. Se distingue porque los elementos van entre comillas (cada uno). Puede ser desde un sólo caracter hasta oraciones completas. Puede parecer que contienen números, pero las comillaa indican que serán tratados como texto. Podemos subsetearlos por su índice o buscando literalmente el texto.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">&lt;-</span> <span class="st">"La candente mañana de febrero en que Beatriz Viterbo murió, después de una imperiosa agonía que no se rebajó un solo instante ni al sentimentalismo ni al miedo"</span></code></pre></div>
+</div>
+<div id="enteros-y-números-numeric" class="section level3">
+<h3>
+<span class="header-section-number">2.8.2</span> Enteros y números (numeric)<a class="anchor" aria-label="anchor" href="#enteros-y-n%C3%BAmeros-numeric"><i class="fas fa-link"></i></a>
+</h3>
+<p>R por default representa los números como <code>numeric</code>, NO <code>integer</code>. Estos tipos son dos formas diferentes en las cuales las computadoras pueden guardar los números y hacer operaciones matemáticas con ellos. Por lo común esto no importa, pero puede ser relevante para algunas funciones de Bioconductor, por ejemplo ya que el tamaño máximo de un <code>integer</code> en R es ligeramente más chico que el tamaño del genoma humano.</p>
+<p>¿Cómo revisar si un objeto es numeric o entero?</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+
+</div>
+</div>
+<div id="vectors" class="section level2">
+<h2>
+<span class="header-section-number">2.9</span> # Vectores en R<a class="anchor" aria-label="anchor" href="#vectors"><i class="fas fa-link"></i></a>
+</h2>
+<p>En R puedes guardar muchos elementos del mismo tipo en un sólo objeto mediante vectores.</p>
+<p>Un vector es una colección de datos del mismo tipo. Siempre del <strong>mismo tipo</strong>. No es posible mezclarlos.</p>
+<hr>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Acá empieza</a></div>
+<div class="next"><a href="vectores.html"><span class="header-section-number">3</span> Vectores</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#intro"><span class="header-section-number">2</span> Introducción a R</a></li>
+<li><a class="nav-link" href="#paquetes-o-bibliotecas"><span class="header-section-number">2.1</span> Paquetes o bibliotecas</a></li>
+<li><a class="nav-link" href="#ayuda-en-r"><span class="header-section-number">2.2</span> Ayuda en R</a></li>
+<li><a class="nav-link" href="#expresiones-y-asignaciones"><span class="header-section-number">2.3</span> Expresiones y asignaciones</a></li>
+<li><a class="nav-link" href="#movimiento-entre-directorios"><span class="header-section-number">2.4</span> Movimiento entre directorios</a></li>
+<li><a class="nav-link" href="#importante"><span class="header-section-number">2.5</span> Importante</a></li>
+<li><a class="nav-link" href="#operaciones-aritm%C3%A9ticas"><span class="header-section-number">2.6</span> Operaciones aritméticas</a></li>
+<li>
+<a class="nav-link" href="#prioridad-en-las-operaciones"><span class="header-section-number">2.7</span> Prioridad en las operaciones</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#ejercicios"><span class="header-section-number">2.7.1</span> Ejercicios</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#tipos-de-datos-l%C3%B3gicos-o-booleanos"><span class="header-section-number">2.8</span> Tipos de datos lógicos o booleanos</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#caracter"><span class="header-section-number">2.8.1</span> Caracter</a></li>
+<li><a class="nav-link" href="#enteros-y-n%C3%BAmeros-numeric"><span class="header-section-number">2.8.2</span> Enteros y números (numeric)</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#vectors"><span class="header-section-number">2.9</span> # Vectores en R</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Notas de R</strong>" was written by Roberto Álvarez. It was last built on 2021-09-24.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

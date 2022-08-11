@@ -1,0 +1,3162 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={Notas de R},
+            pdfauthor={Roberto Álvarez},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Notas de R}
+\author{Roberto Álvarez}
+\date{2021-09-24}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{acuxe1-empieza}{%
+\chapter{Acá empieza}\label{acuxe1-empieza}}
+
+\hypertarget{intro}{%
+\chapter{Introducción a R}\label{intro}}
+
+R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Software libre.
+\item
+  Facilidad para el manejo y almacenamiento de datos.
+\item
+  Un conjunto de operadores para el cálculo de vectores y matrices.
+\item
+  Una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
+\item
+  Multitud de facilidades gráficas de altísima calidad
+\item
+  Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.
+\item
+  La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
+\item
+  \textbf{Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar\ldots{}), sin embargo es más díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.}
+\end{enumerate}
+
+\hypertarget{paquetes-o-bibliotecas}{%
+\section{Paquetes o bibliotecas}\label{paquetes-o-bibliotecas}}
+
+Las funciones especializadas de R se guardan en paquetes \emph{(packages)} que deben ser invocados ANTES de llamar a una función del paquete
+
+Una manera de instalar paquetes es mediante el repositorio \href{https://cran.r-project.org/}{CRAN}.
+
+Navega por CRAN y encuentra algunos paquetes que podrían interesarte. Hay miles y cada día aumentan.
+
+Para saber qué paquetes se tienen instalados en
+tu máquina teclea la función library()
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Para cargar un paquete en particular deben teclear, siempre y cuando ya esté instalado
+
+\texttt{library(nombre\_de\_paquete)}
+
+Por ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(gplots)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'gplots'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     lowess
+\end{verbatim}
+
+Para visualizar los paquetes ya cargados tecleamos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{search}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] ".GlobalEnv"        "package:gplots"    "package:stats"    
+##  [4] "package:graphics"  "package:grDevices" "package:utils"    
+##  [7] "package:datasets"  "package:methods"   "Autoloads"        
+## [10] "package:base"
+\end{verbatim}
+
+Para visualizar las funciones dentro de un paquete en particular se utiliza
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ls}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "angleAxis"      "balloonplot"    "bandplot"       "barplot2"      
+##  [5] "bluered"        "boxplot2"       "ci2d"           "col2hex"       
+##  [9] "colorpanel"     "greenred"       "heatmap.2"      "hist2d"        
+## [13] "lmplot2"        "lowess"         "ooplot"         "overplot"      
+## [17] "panel.overplot" "plot.venn"      "plotCI"         "plotLowess"    
+## [21] "plotmeans"      "qqnorm.aov"     "redblue"        "redgreen"      
+## [25] "reorder.factor" "residplot"      "rich.colors"    "sinkplot"      
+## [29] "smartlegend"    "space"          "textplot"       "venn"          
+## [33] "wapply"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{demo}\NormalTok{(graphics)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## 
+##  demo(graphics)
+##  ---- ~~~~~~~~
+## 
+## > #  Copyright (C) 1997-2009 The R Core Team
+## > 
+## > require(datasets)
+## 
+## > require(grDevices); require(graphics)
+## 
+## > ## Here is some code which illustrates some of the differences between
+## > ## R and S graphics capabilities.  Note that colors are generally specified
+## > ## by a character string name (taken from the X11 rgb.txt file) and that line
+## > ## textures are given similarly.  The parameter "bg" sets the background
+## > ## parameter for the plot and there is also an "fg" parameter which sets
+## > ## the foreground color.
+## > 
+## > 
+## > x <- stats::rnorm(50)
+## 
+## > opar <- par(bg = "white")
+## 
+## > plot(x, ann = FALSE, type = "n")
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{verbatim}
+## 
+## > abline(h = 0, col = gray(.90))
+## 
+## > lines(x, col = "green4", lty = "dotted")
+## 
+## > points(x, bg = "limegreen", pch = 21)
+## 
+## > title(main = "Simple Use of Color In a Plot",
+## +       xlab = "Just a Whisper of a Label",
+## +       col.main = "blue", col.lab = gray(.8),
+## +       cex.main = 1.2, cex.lab = 1.0, font.main = 4, font.lab = 3)
+## 
+## > ## A little color wheel.    This code just plots equally spaced hues in
+## > ## a pie chart.    If you have a cheap SVGA monitor (like me) you will
+## > ## probably find that numerically equispaced does not mean visually
+## > ## equispaced.  On my display at home, these colors tend to cluster at
+## > ## the RGB primaries.  On the other hand on the SGI Indy at work the
+## > ## effect is near perfect.
+## > 
+## > par(bg = "gray")
+## 
+## > pie(rep(1,24), col = rainbow(24), radius = 0.9)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{verbatim}
+## 
+## > title(main = "A Sample Color Wheel", cex.main = 1.4, font.main = 3)
+## 
+## > title(xlab = "(Use this as a test of monitor linearity)",
+## +       cex.lab = 0.8, font.lab = 3)
+## 
+## > ## We have already confessed to having these.  This is just showing off X11
+## > ## color names (and the example (from the postscript manual) is pretty "cute".
+## > 
+## > pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+## 
+## > names(pie.sales) <- c("Blueberry", "Cherry",
+## +              "Apple", "Boston Cream", "Other", "Vanilla Cream")
+## 
+## > pie(pie.sales,
+## +     col = c("purple","violetred1","green3","cornsilk","cyan","white"))
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-3.pdf}
+
+\begin{verbatim}
+## 
+## > title(main = "January Pie Sales", cex.main = 1.8, font.main = 1)
+## 
+## > title(xlab = "(Don't try this at home kids)", cex.lab = 0.8, font.lab = 3)
+## 
+## > ## Boxplots:  I couldn't resist the capability for filling the "box".
+## > ## The use of color seems like a useful addition, it focuses attention
+## > ## on the central bulk of the data.
+## > 
+## > par(bg="cornsilk")
+## 
+## > n <- 10
+## 
+## > g <- gl(n, 100, n*100)
+## 
+## > x <- rnorm(n*100) + sqrt(as.numeric(g))
+## 
+## > boxplot(split(x,g), col="lavender", notch=TRUE)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-4.pdf}
+
+\begin{verbatim}
+## 
+## > title(main="Notched Boxplots", xlab="Group", font.main=4, font.lab=1)
+## 
+## > ## An example showing how to fill between curves.
+## > 
+## > par(bg="white")
+## 
+## > n <- 100
+## 
+## > x <- c(0,cumsum(rnorm(n)))
+## 
+## > y <- c(0,cumsum(rnorm(n)))
+## 
+## > xx <- c(0:n, n:0)
+## 
+## > yy <- c(x, rev(y))
+## 
+## > plot(xx, yy, type="n", xlab="Time", ylab="Distance")
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-5.pdf}
+
+\begin{verbatim}
+## 
+## > polygon(xx, yy, col="gray")
+## 
+## > title("Distance Between Brownian Motions")
+## 
+## > ## Colored plot margins, axis labels and titles.    You do need to be
+## > ## careful with these kinds of effects.    It's easy to go completely
+## > ## over the top and you can end up with your lunch all over the keyboard.
+## > ## On the other hand, my market research clients love it.
+## > 
+## > x <- c(0.00, 0.40, 0.86, 0.85, 0.69, 0.48, 0.54, 1.09, 1.11, 1.73, 2.05, 2.02)
+## 
+## > par(bg="lightgray")
+## 
+## > plot(x, type="n", axes=FALSE, ann=FALSE)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-6.pdf}
+
+\begin{verbatim}
+## 
+## > usr <- par("usr")
+## 
+## > rect(usr[1], usr[3], usr[2], usr[4], col="cornsilk", border="black")
+## 
+## > lines(x, col="blue")
+## 
+## > points(x, pch=21, bg="lightcyan", cex=1.25)
+## 
+## > axis(2, col.axis="blue", las=1)
+## 
+## > axis(1, at=1:12, lab=month.abb, col.axis="blue")
+## 
+## > box()
+## 
+## > title(main= "The Level of Interest in R", font.main=4, col.main="red")
+## 
+## > title(xlab= "1996", col.lab="red")
+## 
+## > ## A filled histogram, showing how to change the font used for the
+## > ## main title without changing the other annotation.
+## > 
+## > par(bg="cornsilk")
+## 
+## > x <- rnorm(1000)
+## 
+## > hist(x, xlim=range(-4, 4, x), col="lavender", main="")
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-7.pdf}
+
+\begin{verbatim}
+## 
+## > title(main="1000 Normal Random Variates", font.main=3)
+## 
+## > ## A scatterplot matrix
+## > ## The good old Iris data (yet again)
+## > 
+## > pairs(iris[1:4], main="Edgar Anderson's Iris Data", font.main=4, pch=19)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-8.pdf}
+
+\begin{verbatim}
+## 
+## > pairs(iris[1:4], main="Edgar Anderson's Iris Data", pch=21,
+## +       bg = c("red", "green3", "blue")[unclass(iris$Species)])
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-9.pdf}
+
+\begin{verbatim}
+## 
+## > ## Contour plotting
+## > ## This produces a topographic map of one of Auckland's many volcanic "peaks".
+## > 
+## > x <- 10*1:nrow(volcano)
+## 
+## > y <- 10*1:ncol(volcano)
+## 
+## > lev <- pretty(range(volcano), 10)
+## 
+## > par(bg = "lightcyan")
+## 
+## > pin <- par("pin")
+## 
+## > xdelta <- diff(range(x))
+## 
+## > ydelta <- diff(range(y))
+## 
+## > xscale <- pin[1]/xdelta
+## 
+## > yscale <- pin[2]/ydelta
+## 
+## > scale <- min(xscale, yscale)
+## 
+## > xadd <- 0.5*(pin[1]/scale - xdelta)
+## 
+## > yadd <- 0.5*(pin[2]/scale - ydelta)
+## 
+## > plot(numeric(0), numeric(0),
+## +      xlim = range(x)+c(-1,1)*xadd, ylim = range(y)+c(-1,1)*yadd,
+## +      type = "n", ann = FALSE)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-10.pdf}
+
+\begin{verbatim}
+## 
+## > usr <- par("usr")
+## 
+## > rect(usr[1], usr[3], usr[2], usr[4], col="green3")
+## 
+## > contour(x, y, volcano, levels = lev, col="yellow", lty="solid", add=TRUE)
+## 
+## > box()
+## 
+## > title("A Topographic Map of Maunga Whau", font= 4)
+## 
+## > title(xlab = "Meters North", ylab = "Meters West", font= 3)
+## 
+## > mtext("10 Meter Contour Spacing", side=3, line=0.35, outer=FALSE,
+## +       at = mean(par("usr")[1:2]), cex=0.7, font=3)
+## 
+## > ## Conditioning plots
+## > 
+## > par(bg="cornsilk")
+## 
+## > coplot(lat ~ long | depth, data = quakes, pch = 21, bg = "green3")
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-11.pdf}
+
+\begin{verbatim}
+## 
+## > par(opar)
+\end{verbatim}
+
+\hypertarget{ayuda-en-r}{%
+\section{Ayuda en R}\label{ayuda-en-r}}
+
+help(nombre\_comando) o ?nombre\_comando
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{(solve)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?solve}
+\end{Highlighting}
+\end{Shaded}
+
+son equivalentes para buscar ayuda sobre el comando solve
+
+Para buscar ayuda de funciones o palabra reservadas se utilizan comillas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{(}\StringTok{"for"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Para abrir la ayuda genral en un navegador (sólo si tenemos la ayuda en HTML instalada y tenemos conexión a la red) se utiliza
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help.start}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## starting httpd help server ... done
+\end{verbatim}
+
+\begin{verbatim}
+## If the browser launched by '/usr/bin/open' is already running, it is
+##     *not* restarted, and you must switch to its window.
+## Otherwise, be patient ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help.search}\NormalTok{(}\StringTok{"clustering"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Si queremos ver ejemplos del uso de los comandos usamos la función ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{example}\NormalTok{(}\StringTok{"hclust"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## hclust> require(graphics)
+## 
+## hclust> ### Example 1: Violent crime rates by US state
+## hclust> 
+## hclust> hc <- hclust(dist(USArrests), "ave")
+## 
+## hclust> plot(hc)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{verbatim}
+## 
+## hclust> plot(hc, hang = -1)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+\begin{verbatim}
+## 
+## hclust> ## Do the same with centroid clustering and *squared* Euclidean distance,
+## hclust> ## cut the tree into ten clusters and reconstruct the upper part of the
+## hclust> ## tree from the cluster centers.
+## hclust> hc <- hclust(dist(USArrests)^2, "cen")
+## 
+## hclust> memb <- cutree(hc, k = 10)
+## 
+## hclust> cent <- NULL
+## 
+## hclust> for(k in 1:10){
+## hclust+   cent <- rbind(cent, colMeans(USArrests[memb == k, , drop = FALSE]))
+## hclust+ }
+## 
+## hclust> hc1 <- hclust(dist(cent)^2, method = "cen", members = table(memb))
+## 
+## hclust> opar <- par(mfrow = c(1, 2))
+## 
+## hclust> plot(hc,  labels = FALSE, hang = -1, main = "Original Tree")
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## hclust> plot(hc1, labels = FALSE, hang = -1, main = "Re-start from 10 clusters")
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-3.pdf}
+
+\begin{verbatim}
+## 
+## hclust> par(opar)
+## 
+## hclust> ### Example 2: Straight-line distances among 10 US cities
+## hclust> ##  Compare the results of algorithms "ward.D" and "ward.D2"
+## hclust> 
+## hclust> mds2 <- -cmdscale(UScitiesD)
+## 
+## hclust> plot(mds2, type="n", axes=FALSE, ann=FALSE)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-4.pdf}
+
+\begin{verbatim}
+## 
+## hclust> text(mds2, labels=rownames(mds2), xpd = NA)
+## 
+## hclust> hcity.D  <- hclust(UScitiesD, "ward.D") # "wrong"
+## 
+## hclust> hcity.D2 <- hclust(UScitiesD, "ward.D2")
+## 
+## hclust> opar <- par(mfrow = c(1, 2))
+## 
+## hclust> plot(hcity.D,  hang=-1)
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## hclust> plot(hcity.D2, hang=-1)
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-11-5.pdf}
+
+\begin{verbatim}
+## 
+## hclust> par(opar)
+\end{verbatim}
+
+Todo lo anterior requiere que conzocamos el nombre correcto del comando, pero ¿qué pasa si no lo sabemos?
+Podemos utilizar el comando \texttt{apropos()} para encontrar todo lo relacionado con algún término
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apropos}\NormalTok{(}\StringTok{"solve"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "backsolve"     "forwardsolve"  "qr.solve"      "solve"        
+## [5] "solve.default" "solve.qr"
+\end{verbatim}
+
+\hypertarget{expresiones-y-asignaciones}{%
+\section{Expresiones y asignaciones}\label{expresiones-y-asignaciones}}
+
+Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variables; las segundas se asignan y guardan en una variable
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0.90655617 -1.63036042 -0.68360940  1.71628045 -1.17656349  0.03502604
+##  [7]  1.76468431  0.56674047 -0.05036079 -0.36791900
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.7952768 -0.4160107  0.5076192 -0.2917342 -1.1421649  0.3507873
+##  [7] -0.3022059  0.4375421 -0.4482814  0.7722986
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{equals-sign-assignment-operator-imgflip-com-going-through-data-structures-and-47188178.png}
+\caption{Operado de asignación. Evitar el uso del igual}
+\end{figure}
+
+R distingue entre mayúsculas y minúsculas, así las siguientes variables contienen valores distintos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\DecValTok{6}
+\end{Highlighting}
+\end{Shaded}
+
+Los comandos pueden separarse por \texttt{;} o - mejor opción- por un salto de línea
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\DecValTok{3}\NormalTok{; b <-}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+también pueden definirse asignaciones en más de una línea
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}
+\StringTok{  }\NormalTok{pi }\OperatorTok{+}\StringTok{ }\DecValTok{12}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{movimiento-entre-directorios}{%
+\section{Movimiento entre directorios}\label{movimiento-entre-directorios}}
+
+Para saber en qué directorio estamos tecleamos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/robertoalvarez/Dropbox/UAQ/Bioinformatica/Libro_de_R"
+\end{verbatim}
+
+Para cambiar de directorio utilizamos \texttt{setwd("direccion\_a\_la\_que\_quieres\_ir")}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"~"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+También podemos usar los comandos de bash dentro de R, utilizando la función \texttt{system()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{system}\NormalTok{(}\StringTok{"ls -la"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{system}\NormalTok{(}\StringTok{"pwd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importante}{%
+\section{Importante}\label{importante}}
+
+\textbf{Como regla general todos los nombres van entre comillas: nombre de carpetas, archivos, de columnas, de renglones,etc.}
+
+\hypertarget{operaciones-aritmuxe9ticas}{%
+\section{Operaciones aritméticas}\label{operaciones-aritmuxe9ticas}}
+
+Se puede sumar, restar, multiplicar,dividir, ``exponenciar'' y calcular la raíz cuadrada.
+Los operadores son, respectivamente: \texttt{+},\texttt{-},\texttt{*}, \texttt{/},\texttt{**} o \texttt{\^{}}, \texttt{sqrt()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{+}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20.14159
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{-}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10.14159
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{*}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 75.70796
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{**}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 795898.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{^}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 795898.7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.89122
+\end{verbatim}
+
+\hypertarget{prioridad-en-las-operaciones}{%
+\section{Prioridad en las operaciones}\label{prioridad-en-las-operaciones}}
+
+Las operaciones se efectuan en el siguiente orden:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  izquierda a derecha
+\item
+  sqrt() y ** , \^{}
+\item
+  "*" y /
+\item
+  ``+'' y -
+\item
+  \textless{}-
+\end{enumerate}
+
+Este orden se altera si se presenta un paréntesis. En ese caso la operación dentro del paréntesis es la que se realiza primero.
+
+Ejemplos
+
+4 + 2 *3 = 4 + 6 = 10
+
+4-15/3 +3\^{}2 +sqrt(9)= 4-15/3 + 9 +3 = 4-5+12=13
+
+4-(3+7)\^{}2 + (2+3)/5=4-100+5/5=-95
+
+\hypertarget{ejercicios}{%
+\subsection{Ejercicios}\label{ejercicios}}
+
+Resuelve en un pedazo de papel primero para saber cuál sería el resultado de las siguientes operaciones aritméticas. Después comprueba tu resultado tecleandolas en R
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  1 + 2*3 +3 +15/3
+\item
+  4-15/3 +3\^{}2 +3*sqrt(81)
+\item
+  40-(4+3)\^{}2 + (10-5)/3
+\end{enumerate}
+
+\hypertarget{tipos-de-datos-luxf3gicos-o-booleanos}{%
+\section{Tipos de datos lógicos o booleanos}\label{tipos-de-datos-luxf3gicos-o-booleanos}}
+
+Estos tipos de datos \textbf{sólo} contienen información \texttt{TRUE} o \texttt{FALSE}. Sirven para evaluar expresiones de =, \textless{}, \textgreater{} y pueden utilizarse para obtener los elementos de un vector que cumplan con la característica deseada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \OperatorTok{<}\StringTok{ }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{==}\StringTok{ }\DecValTok{0}  \CommentTok{# Es igual a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{!=}\StringTok{ }\DecValTok{0}    \CommentTok{# NO es igual a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{<=}\StringTok{ }\DecValTok{0}    \CommentTok{#Menor o igual }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+Dentro de R un valor lógico \texttt{TRUE} equivale a 1 y \texttt{FALSE} equivale a 0, por lo tanto para contar cuántos \texttt{TRUE}s hay podemos hacer una suma:
+
+\textbf{Ejercicio} utiliza una sola líndea de R para averiguar si el logaritmo base de 10 de 20 es menor que la raiz cuadrada de 4.
+
+\hypertarget{caracter}{%
+\subsection{Caracter}\label{caracter}}
+
+Son \emph{strings} de texto. Se distingue porque los elementos van entre comillas (cada uno). Puede ser desde un sólo caracter hasta oraciones completas. Puede parecer que contienen números, pero las comillaa indican que serán tratados como texto. Podemos subsetearlos por su índice o buscando literalmente el texto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ "La candente mañana de febrero en que Beatriz Viterbo murió, después de una imperiosa agonía que no se rebajó un solo instante ni al sentimentalismo ni al miedo"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{enteros-y-nuxfameros-numeric}{%
+\subsection{Enteros y números (numeric)}\label{enteros-y-nuxfameros-numeric}}
+
+R por default representa los números como \texttt{numeric}, NO \texttt{integer}. Estos tipos son dos formas diferentes en las cuales las computadoras pueden guardar los números y hacer operaciones matemáticas con ellos. Por lo común esto no importa, pero puede ser relevante para algunas funciones de Bioconductor, por ejemplo ya que el tamaño máximo de un \texttt{integer} en R es ligeramente más chico que el tamaño del genoma humano.
+
+¿Cómo revisar si un objeto es numeric o entero?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{1}
+\KeywordTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}
+\KeywordTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\hypertarget{vectors}{%
+\section{\# Vectores en R}\label{vectors}}
+
+En R puedes guardar muchos elementos del mismo tipo en un sólo objeto mediante vectores.
+
+Un vector es una colección de datos del mismo tipo. Siempre del \textbf{mismo tipo}. No es posible mezclarlos.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{vectores}{%
+\chapter{Vectores}\label{vectores}}
+
+\hypertarget{definiciuxf3n}{%
+\section{Definición}\label{definiciuxf3n}}
+
+Para definir un vector se utiliza la función c(), que siginfica \emph{combine}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{90}\NormalTok{,}\FloatTok{76.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{longitud-de-un-vector}{%
+\subsection{Longitud de un vector}\label{longitud-de-un-vector}}
+
+Para obtener la longitud de un vector, es decir el número de elementos que tiene
+se utiliza la función \texttt{length()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+Como siempre, para mostrar el contenido de una variable
+sólo es necesario poner la variable y presionar enter en la sesión interactiva, si se está en un \emph{script} es necesario usar la función \texttt{print()}
+
+\hypertarget{uso-de-la-funciuxf3n-combine-c-y-el-operador}{%
+\section{\texorpdfstring{Uso de la función combine \texttt{c()} y el operador \texttt{:}}{Uso de la función combine c() y el operador :}}\label{uso-de-la-funciuxf3n-combine-c-y-el-operador}}
+
+Un vector se puede definir de forma extensiva, es decir poniendo explícitamente todos los valores del vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y<-}\KeywordTok{c}\NormalTok{(}\StringTok{"esto"}\NormalTok{,}\StringTok{"es"}\NormalTok{,}\StringTok{"un"}\NormalTok{,}\StringTok{"vector"}\NormalTok{)}
+\NormalTok{z<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{1000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esto es muy poco eficiente a menos que los vectores sean muy pequeños por lo que existen funciones para generar algunos casos particulares.
+Por ejemplo, si queremos tener un vector que tenga los primeros 100 números enteros podemos definirlo de la siguiente manera con el uso del operador \texttt{:} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{;}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+\end{verbatim}
+
+También se puede usar de forma equivalente la función \texttt{seq()} que significa sequence. \texttt{seq()} es una generalización del operador \texttt{:},
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+\end{verbatim}
+
+con ella podemos generar secuencias numéricas de distintas clase y espaciadas por diferentes rangos. Por ejemplo si queremos tener una secuencia de -12 a 30 en pasos de 3, es decir -12, -9,-6,\ldots{}, 27,30
+Teclearíamos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from=}\OperatorTok{-}\DecValTok{12}\NormalTok{,}\DataTypeTok{to=}\DecValTok{30}\NormalTok{,}\DataTypeTok{by=}\DecValTok{3}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -12  -9  -6  -3   0   3   6   9  12  15  18  21  24  27  30
+\end{verbatim}
+
+Podemos omitir los nombres from, to,by si usamos el mismo orden, si queremos intercambiarlo debemos necesariamente ponerlos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y<-}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z<-}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{by=}\FloatTok{0.1}\NormalTok{, }\DataTypeTok{to =}\DecValTok{1}\NormalTok{, }\DataTypeTok{from=}\FloatTok{0.5}\NormalTok{)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5 0.6 0.7 0.8 0.9 1.0
+\end{verbatim}
+
+\hypertarget{acceder-a-elementos-de-un-vector}{%
+\section{Acceder a elementos de un vector}\label{acceder-a-elementos-de-un-vector}}
+
+\hypertarget{elementos-consecutivos-de-un-vector}{%
+\subsection{Elementos consecutivos de un vector}\label{elementos-consecutivos-de-un-vector}}
+
+Para acceder a elemetnos de un objeto con índices en R debemos usar los
+corchetes \texttt{{[}{]}} para indicarle que queremos seleccionar esos objetos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\StringTok{"Muchos"}\NormalTok{, }\StringTok{"años"}\NormalTok{ ,}\StringTok{"después"}\NormalTok{ ,}\StringTok{","}\NormalTok{, }\StringTok{"frente"}\NormalTok{, }\StringTok{"al"}\NormalTok{ ,}\StringTok{"pelotón")}
+\StringTok{x[1:4]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Muchos"  "años"    "después" ","
+\end{verbatim}
+
+`
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{21}\NormalTok{)}
+\NormalTok{x[}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3  5  8 13
+\end{verbatim}
+
+\hypertarget{elementos-no-consecutivos-de-un-vector}{%
+\subsection{Elementos no consecutivos de un vector}\label{elementos-no-consecutivos-de-un-vector}}
+
+Para seleccionar elementos no consecutivos definimos un nuevo vector (con la función \texttt{c()} ) de índices que seleccionará los elementos que quieres
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\StringTok{"Muchos"}\NormalTok{, }\StringTok{"años"}\NormalTok{ ,}\StringTok{"después"}\NormalTok{ ,}\StringTok{","}\NormalTok{, }\StringTok{"frente"}\NormalTok{, }\StringTok{"al"}\NormalTok{ ,}\StringTok{"pelotón")}
+\StringTok{x[c(1,3,5,7)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Muchos"  "después" "frente"  "pelotón"
+\end{verbatim}
+
+No es necesario que estén en orden
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{21}\NormalTok{)}
+\NormalTok{x[}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{4}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2 21  5
+\end{verbatim}
+
+\hypertarget{excluir-elementos-de-un-vector}{%
+\subsection{Excluir elementos de un vector}\label{excluir-elementos-de-un-vector}}
+
+Para seleccionar algunos elementos \textbf{excepto} un conjunto de ellos usamos
+el signo menos \texttt{-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{21}\NormalTok{)}
+\NormalTok{x[}\OperatorTok{-}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  3  5  8 13 21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Todos menos el segundo elemento}
+\NormalTok{x[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{4}\NormalTok{)]   }\CommentTok{# Todos menos el segundo , séptimo y cuarto elemento}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  3  8 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\OperatorTok{-}\KeywordTok{length}\NormalTok{(x)]    }\CommentTok{# ¿Esto qué hace?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3  5  8 13
+\end{verbatim}
+
+Este comando \textbf{no elimina} elementos de un vector sólo los selecciona
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{21}\NormalTok{)}
+\NormalTok{x[}\OperatorTok{-}\DecValTok{6}\NormalTok{] }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3  5  8 21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x     }\CommentTok{# Estoy intacto}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3  5  8 13 21
+\end{verbatim}
+
+\hypertarget{agregar-y-quitar-elementos-de-un-vector}{%
+\section{Agregar y quitar elementos de un vector}\label{agregar-y-quitar-elementos-de-un-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{],}\DecValTok{168}\NormalTok{,x[}\DecValTok{4}\NormalTok{]) }
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  88   5  12 168  13
+\end{verbatim}
+
+Podemos, incluso, definir un vector vacío y luego ``llenarlo''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{()}
+\NormalTok{x                 }\CommentTok{# Soy un vector vacío :(}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\NormalTok{]<-}\StringTok{ }\DecValTok{2}
+\NormalTok{x[}\DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{]<-}\KeywordTok{c}\NormalTok{(}\DecValTok{56}\NormalTok{,}\DecValTok{78}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{12}\NormalTok{)}
+\NormalTok{x                 }\CommentTok{# Ahora ya no :)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2 56 78 90 12
+\end{verbatim}
+
+\hypertarget{repeticiuxf3n-de-elementos-de-un-vector-con-rep}{%
+\section{\texorpdfstring{Repetición de elementos de un vector con \texttt{rep()}}{Repetición de elementos de un vector con rep()}}\label{repeticiuxf3n-de-elementos-de-un-vector-con-rep}}
+
+La función \texttt{rep()} que viene del inglés \emph{repeat} nos permite repetir elementos en un vector dado. Por ejemplo, \texttt{rep(x,n\ veces)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{rep}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 3 3 3 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y<-}\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{),}\DecValTok{3}\NormalTok{)}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 3 5 1 2 3 5 1 2 3 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{primos<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{)}
+\NormalTok{z<-}\KeywordTok{rep}\NormalTok{(primos,}\DecValTok{4}\NormalTok{)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  5  7 11  1  2  3  5  7 11  1  2  3  5  7 11  1  2  3  5  7 11
+\end{verbatim}
+
+También podemos usar la opción \texttt{each} para indicar la frecuencia de repetición
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{y<-}\KeywordTok{rep}\NormalTok{(x,}\DataTypeTok{each=}\DecValTok{2}\NormalTok{)}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 1 2 2 3 3 4 4
+\end{verbatim}
+
+\hypertarget{uso-de-funciones-any-y-all}{%
+\section{\texorpdfstring{Uso de funciones \texttt{any()} y \texttt{all()}}{Uso de funciones any() y all()}}\label{uso-de-funciones-any-y-all}}
+
+Las funciones \texttt{any()} y \texttt{all()} determinan si alguno o todos los elementos de un vector cumplen cierta condición respectivamente. La respuesta siempre será un valor booleano es decir: \textbf{TRUE} o \textbf{FALSE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{15}
+\KeywordTok{any}\NormalTok{(x }\OperatorTok{>}\StringTok{ }\FloatTok{7.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{any}\NormalTok{(x }\OperatorTok{>}\StringTok{ }\FloatTok{19.76}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{any}\NormalTok{(x }\OperatorTok{>=}\StringTok{ }\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{>}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{>}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{operaciones-con-vectores}{%
+\section{Operaciones con vectores}\label{operaciones-con-vectores}}
+
+Al igual que en álgebra podemos definir varias operaciones que nos dejan siempre otro vector:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Suma (resta) de vectores
+\item
+  Producto de vectores (término a término)
+\item
+  Producto de un escalar por un vector
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\NormalTok{y<-}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 7 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{-}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3 -3 -3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{*}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 4 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y}\OperatorTok{*}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16 25 36
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{*}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  4 10 18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\NormalTok{x                }\CommentTok{#Multiplicación por escalar: término a término}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 6 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\NormalTok{y          }\CommentTok{# Sí, por cualquier escalar!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.656854 7.071068 8.485281
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\NormalTok{x }\OperatorTok{+}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\DecValTok{2}\NormalTok{)}\OperatorTok{*}\NormalTok{y    }\CommentTok{# Operaciones más complejas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  8.656854 13.071068 17.485281
+\end{verbatim}
+
+También podemos aplicar funciones para calcular con una sola instrucción varias operaciones útiles, por ejemplo \texttt{min()}, \texttt{max()}, \texttt{range()} ,
+\texttt{sum()}, \texttt{mean()}, \texttt{median()}, \texttt{sd()},\texttt{quantile()},\texttt{unique()},\texttt{sort()}
+Si tienes duda de qué hace alguna de ellas busca en la ayuda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\KeywordTok{min}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.354318
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{max}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.066276
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.354318  3.066276
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -7.607686
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.007607686
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.0120013
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.019418
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         0%        25%        50%        75%       100% 
+## -3.3543179 -0.7362966 -0.0120013  0.6429135  3.0662765
+\end{verbatim}
+
+Para \texttt{unique()} y \texttt{sort()} conviene tener elementos discretos más que continuos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{),}\DecValTok{1}\OperatorTok{:}\DecValTok{15}\NormalTok{,}\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{),}\DecValTok{5}\NormalTok{))}
+\KeywordTok{unique}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  3  1  2  4  5  6  7  8  9 10 11 12 13 14 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{sample}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  7  2  8  4  9 10  6  3  5  1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sort}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\hypertarget{gruxe1ficos-con-vectores}{%
+\section{Gráficos con vectores}\label{gruxe1ficos-con-vectores}}
+
+Podemos graficar los vectores de manera inmediata en \texttt{R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10000}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(x,}\DataTypeTok{col=}\StringTok{"tomato2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(x,}\DataTypeTok{col=}\StringTok{"salmon"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(x,}\DataTypeTok{col=}\StringTok{"wheat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-3.pdf}
+
+\hypertarget{vectores-con-nombre}{%
+\section{Vectores con nombre}\label{vectores-con-nombre}}
+
+Definimos un vector llamado edades
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edades<-}\KeywordTok{c}\NormalTok{(}\DecValTok{35}\NormalTok{,}\DecValTok{35}\NormalTok{,}\DecValTok{70}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{edades}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 35 35 70 17 14
+\end{verbatim}
+
+Podemos definir un vector del mismo tamaño que \texttt{edades} llamado nombres
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nombres <-}\KeywordTok{c}\NormalTok{(}\StringTok{"Jerry"}\NormalTok{,}\StringTok{"Beth"}\NormalTok{,}\StringTok{"Rick"}\NormalTok{, }\StringTok{"Summer"}\NormalTok{,}\StringTok{"Morty"}\NormalTok{)}
+\NormalTok{nombres}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Jerry"  "Beth"   "Rick"   "Summer" "Morty"
+\end{verbatim}
+
+Una de las cracterísticas de R es que podemos asignarles nombres a los vectores, para ello usamos la función \texttt{names()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(edades)<-nombres}
+\end{Highlighting}
+\end{Shaded}
+
+Con ello ahora el vector edades tiene una nueva característica:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edades}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Jerry   Beth   Rick Summer  Morty 
+##     35     35     70     17     14
+\end{verbatim}
+
+Podemos selecccionar de la manera usual, por ejemplo, si quiero ver cuál es la edad de Rick, debo seleccionar el 3 elemento
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edades[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rick 
+##   70
+\end{verbatim}
+
+Esto es muy poco eficiente y propenso al error sobre todo con vectores muy grandes. Por ello podemos usar los nombres de los vectores
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edades[}\StringTok{"Rick"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rick 
+##   70
+\end{verbatim}
+
+\textbf{Recuerda que los nombres S-I-E-M-P-R-E van entre comillas}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edades[}\KeywordTok{c}\NormalTok{(}\StringTok{"Rick"}\NormalTok{,}\StringTok{"Morty"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Rick Morty 
+##    70    14
+\end{verbatim}
+
+\textbf{Ejercicios:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ¿Cuál es el promedio de las edades, sin contar el de Beth?
+\item
+  Quiten a Morty del vector, ordénenlo y guárdenlo como un nuevo objeto.
+\item
+  ¿Hay alguna edad que sea mayor de 75? ¿Menor de 12? ¿Entre 12 y 20?
+\end{enumerate}
+
+\hypertarget{tamauxf1os-de-genomas}{%
+\subsection{Tamaños de genomas}\label{tamauxf1os-de-genomas}}
+
+Ahora veamos un ejemplo más ``biológico''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP<-}\KeywordTok{c}\NormalTok{(}\FloatTok{3234.83}\NormalTok{,}\FloatTok{2716.97}\NormalTok{,}\FloatTok{143.73}\NormalTok{,}\FloatTok{0.014281}\NormalTok{,}\FloatTok{12.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Por ejemplo si quisierámos ver el tamño en bp simplemente multiplicamos por el valor del prefijo Mega = 1 millón
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP}\OperatorTok{*}\FloatTok{1e6}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3234830000 2716970000  143730000      14281   12100000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{organismo<-}\KeywordTok{c}\NormalTok{(}\StringTok{"Human"}\NormalTok{,}\StringTok{"Mouse"}\NormalTok{,}\StringTok{"Fruit Fly"}\NormalTok{,}\StringTok{"Roundworm"}\NormalTok{,}\StringTok{"Yeast"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(genomeSizeM_BP) <-}\StringTok{ }\NormalTok{organismo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Human       Mouse   Fruit Fly   Roundworm       Yeast 
+## 3234.830000 2716.970000  143.730000    0.014281   12.100000
+\end{verbatim}
+
+Se pueden seleccionar elementos de un vector utilizando corchetes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Human 
+## 3234.83
+\end{verbatim}
+
+Para obtener elementos consecutivos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Human       Mouse   Fruit Fly   Roundworm 
+## 3234.830000 2716.970000  143.730000    0.014281
+\end{verbatim}
+
+Para obtener elementos NO consecutivos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Human   Mouse   Yeast 
+## 3234.83 2716.97   12.10
+\end{verbatim}
+
+Para selecciona (no eliminar, ni quitar) elementos excepto algunos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Mouse   Roundworm 
+## 2716.970000    0.014281
+\end{verbatim}
+
+Para referirnos a los elementos por su nombre
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genomeSizeM_BP[}\KeywordTok{c}\NormalTok{(}\StringTok{"Yeast"}\NormalTok{,}\StringTok{"Human"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Yeast   Human 
+##   12.10 3234.83
+\end{verbatim}
+
+Además de algunas operaciones aritméticas, se pueden calcular la media, máximo, mediana, mínimo, suma y longitud de los vectores
+
+\textbf{Ejercicio}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Generar un vector de las edades de 10 de tus compañeros
+\item
+  Asignales nombre.
+\item
+  Encuentra el mínimo,máximo, media, mediana, la desviación estándar, la longitud del vector y selecciona sólo los elementos impares.
+\item
+  Elimina el máximo y el mínimo y con el vector resultante realiza un histograma.
+\item
+  Crea un vector de caracteres con diez nombres de especies y asocialo con su número de acceso de NCBI para su genoma en nucleótidos.
+\end{enumerate}
+
+\hypertarget{cuxf3mo-lidiar-con-las-nas}{%
+\section{¿Cómo lidiar con las NAs ?}\label{cuxf3mo-lidiar-con-las-nas}}
+
+Es (muy) freceunte que en bases de datos se tengan valores \texttt{NA}, es decir medidas que no pudieron realizarse, medidas perdidas, etc. Para ello se utiliza \texttt{NA}. \texttt{R} trata de manera especial a las NAs
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{168}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Existe una fución para determinar si un elemento es o no una \texttt{NA}. La función es \texttt{is.na()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{168}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{is.na}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE FALSE
+\end{verbatim}
+
+Si queremos calcular ciertas funciones numéricas \texttt{R} no sabrá qué hacer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{168}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+Sin emabrgo, podemos decirle a \texttt{R} que las omita, indicando como argumento de la función \texttt{mean()} \texttt{na.rm=TRUE} que significa \emph{na remove}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{88}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{168}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(x,}\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 70.25
+\end{verbatim}
+
+¿Qué otras funciones tienen esta opción?
+
+\hypertarget{filtrado-de-elementos-de-un-vector}{%
+\section{Filtrado de elementos de un vector}\label{filtrado-de-elementos-de-un-vector}}
+
+Podemos generar vectores de que sean subconjuntos de vectores más grandes que cumplan cierta(s) condición(es)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{19}\NormalTok{) }
+\NormalTok{otro_vector <-}\StringTok{ }\NormalTok{un_vector[un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{]   }\CommentTok{# Leeme de adentro hacia afuera}
+\NormalTok{otro_vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 13 17 19
+\end{verbatim}
+
+Veamos paso a paso qué es lo que hace este proceso
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3  5  7 11 13 17 19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10}    \CommentTok{# Mira, de adentro hacia afuera}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{indices<-un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10} 
+\NormalTok{un_vector[indices]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 13 17 19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector[}\KeywordTok{c}\NormalTok{(}\OtherTok{FALSE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 13 17 19
+\end{verbatim}
+
+la representación interna de los valores booleanos \texttt{FALSE} y \texttt{TRUE}son 0 y 1 respectivamente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector[}\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{),}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\hypertarget{filtrado-con-subset}{%
+\subsection{\texorpdfstring{Filtrado con \texttt{subset()}}{Filtrado con subset()}}\label{filtrado-con-subset}}
+
+Podemos usar la función \texttt{subset()}para hacer lo mismo que en el caso anterior \textbf{excepto que omite los NA}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{19}\NormalTok{) }
+\NormalTok{otro_vector <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(un_vector,un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)   }
+\NormalTok{otro_vector}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 13 17 19
+\end{verbatim}
+
+Qué pasa si tenemos \texttt{NA}s. Si usamos el método anterior obtendríamos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\OtherTok{NA}\NormalTok{,}\DecValTok{19}\NormalTok{) }
+\NormalTok{otro_vector <-}\StringTok{ }\NormalTok{un_vector[un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{]   }\CommentTok{# Leeme de adentro hacia afuera}
+\NormalTok{otro_vector  }\CommentTok{# Aquí salen las NAs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 NA 13 17 NA 19
+\end{verbatim}
+
+En cambio con \texttt{subset()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{un_vector<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\OtherTok{NA}\NormalTok{, }\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\OtherTok{NA}\NormalTok{, }\DecValTok{19}\NormalTok{) }
+\NormalTok{otro_vector <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(un_vector,un_vector}\OperatorTok{*}\NormalTok{un_vector }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)   }
+\NormalTok{otro_vector  }\CommentTok{# Aquí ya no aparecen las NAs}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5  7 11 13 17 19
+\end{verbatim}
+
+\hypertarget{la-funciuxf3n-de-selecciuxf3n-which}{%
+\subsection{\texorpdfstring{La función de selección \texttt{which()}}{La función de selección which()}}\label{la-funciuxf3n-de-selecciuxf3n-which}}
+
+La función \texttt{which()} nos regresa los índices es decir nos dicen \textbf{quiénes} cumplen cierta condición
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{2}\NormalTok{,}\OperatorTok{-}\DecValTok{3}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+\KeywordTok{which}\NormalTok{(z}\OperatorTok{*}\NormalTok{z }\OperatorTok{>}\StringTok{ }\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 4
+\end{verbatim}
+
+Acá nos dicen quiénes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z[}\KeywordTok{which}\NormalTok{(z}\OperatorTok{*}\NormalTok{z }\OperatorTok{>}\StringTok{ }\DecValTok{8}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  5 -3  8
+\end{verbatim}
+
+\hypertarget{cuxf3mo-podemos-ver-si-dos-vectores-son-iguales}{%
+\section{¿Cómo podemos ver si dos vectores son iguales?}\label{cuxf3mo-podemos-ver-si-dos-vectores-son-iguales}}
+
+Dos vectores son iguales si elemento a elemento son idénticos.
+Por lo tanto deben de ser del mismo tamaño. Para probar si dos elementos son iguales se utiliza el operador de comparación \texttt{==} son dos signos iguales juntos, sin espcaio. No confundir con el operador \texttt{=} que se puede usar como operador de asiganción (aunque no es recomendable su uso. De hecho está prohibido en este curso)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{y<-}\DecValTok{1}\OperatorTok{:}\DecValTok{5}
+\NormalTok{y<-y}\OperatorTok{*}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{==}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+¿Qué pasaría si me confundo y escribo el operador de igualdad en lugar del de comparación?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\DecValTok{5}\OperatorTok{:}\DecValTok{9}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 6 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x=y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 6 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 6 7 8 9
+\end{verbatim}
+
+Para vectores grandes puedo usar la función \texttt{all()} que ya vimos arriba
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10000}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\KeywordTok{all}\NormalTok{(x}\OperatorTok{==}\NormalTok{y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+¿Cómo podríamos corrobar que son iguales usando \texttt{any}?
+
+También podríamos utilizar que \texttt{TRUE} es \texttt{1} y que \texttt{FALSE} es \texttt{0}
+
+¿Por qué este código nos dice que sí son iguales?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(x}\OperatorTok{==}\NormalTok{y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10000
+\end{verbatim}
+
+\hypertarget{factor}{%
+\subsection{Factor}\label{factor}}
+
+Los factores son un tipo de vector que puede tomar un número ``limitado'' de valores, que normalmente se utilizan como variables categóricas. Por ejemplo: macho/hembra. Es útil tenener este tipo de objeto porque varios modelos estadísticos que se pueden correr en \texttt{R} los utilizan. A los valores que pueden tomar los elementos del factor se les conoce como \emph{levels}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.factor}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1
+## Levels: 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\KeywordTok{as.factor}\NormalTok{(x)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 2 3 1 2 3 3 1 2 3 3 1
+## Levels: 1 2 3
+\end{verbatim}
+
+Los factores son una manera computacionalmente eficiente de almacenar caracteres, pues cada valor único (level) se guarda solo una vez y a los datos se les asigna un valor entero.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{meses =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"March"}\NormalTok{,}\StringTok{"April"}\NormalTok{,}\StringTok{"January"}\NormalTok{,}\StringTok{"November"}\NormalTok{,}\StringTok{"January"}\NormalTok{,}
+       \StringTok{"September"}\NormalTok{,}\StringTok{"October"}\NormalTok{,}\StringTok{"September"}\NormalTok{,}\StringTok{"November"}\NormalTok{,}\StringTok{"August"}\NormalTok{,}
+        \StringTok{"January"}\NormalTok{,}\StringTok{"November"}\NormalTok{,}\StringTok{"November"}\NormalTok{,}\StringTok{"February"}\NormalTok{,}\StringTok{"May"}\NormalTok{,}\StringTok{"August"}\NormalTok{,}
+        \StringTok{"July"}\NormalTok{,}\StringTok{"December"}\NormalTok{,}\StringTok{"August"}\NormalTok{,}\StringTok{"August"}\NormalTok{,}\StringTok{"September"}\NormalTok{,}\StringTok{"November"}\NormalTok{,}
+         \StringTok{"February"}\NormalTok{,}\StringTok{"April"}\NormalTok{)}
+\NormalTok{meses}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "March"     "April"     "January"   "November"  "January"   "September"
+##  [7] "October"   "September" "November"  "August"    "January"   "November" 
+## [13] "November"  "February"  "May"       "August"    "July"      "December" 
+## [19] "August"    "August"    "September" "November"  "February"  "April"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{meses<-}\KeywordTok{as.factor}\NormalTok{(meses)}
+\NormalTok{meses}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] March     April     January   November  January   September October  
+##  [8] September November  August    January   November  November  February 
+## [15] May       August    July      December  August    August    September
+## [22] November  February  April    
+## 11 Levels: April August December February January July March May ... September
+\end{verbatim}
+
+El que existan los levels permite realizar ciertas operaciones y manipular el contenido del factor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(meses)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## meses
+##     April    August  December  February   January      July     March       May 
+##         2         4         1         2         3         1         1         1 
+##  November   October September 
+##         5         1         3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{levels}\NormalTok{(meses)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "April"     "August"    "December"  "February"  "January"   "July"     
+##  [7] "March"     "May"       "November"  "October"   "September"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{levels}\NormalTok{(meses)[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "April"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{levels}\NormalTok{(meses)[}\DecValTok{1}\NormalTok{]<-}\StringTok{"Abril"}
+\KeywordTok{levels}\NormalTok{(meses)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Abril"     "August"    "December"  "February"  "January"   "July"     
+##  [7] "March"     "May"       "November"  "October"   "September"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{meses}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] March     Abril     January   November  January   September October  
+##  [8] September November  August    January   November  November  February 
+## [15] May       August    July      December  August    August    September
+## [22] November  February  Abril    
+## 11 Levels: Abril August December February January July March May ... September
+\end{verbatim}
+
+\textbf{Ejercicio}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lee la ayuda de \texttt{as.factor} para determinar cómo crear un factor ``ordenado''
+\item
+  Crea un vector con los meses en los que todas las alumnas del grupo cumplen años.
+\item
+  Aprovecha los levels para generar un objeto que guarde el número de estudiantes que cumplena ño cada mes.
+\end{enumerate}
+
+\textbf{Ejercicio}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Genera un vector con el nombre de 10 virus
+\item
+  Asocia esos nombres con su número de acceso en NCBI
+\item
+  Genera otro vector que contega los tamaños en pb y los nombres
+\item
+  Determina cuáles son mayores de 300 bp
+\item
+  Asocia un subconjunto de vectores que sean mayores (menores a 300 bp) y mayores (mayores a 300 bp)
+\item
+  Haz un histograma con los tamaños de todos
+\item
+  Dibuja un boxplot con los tamaños de todos.Pon en el eje los nombres de todos.
+\end{enumerate}
+
+\hypertarget{matrices}{%
+\chapter{Matrices}\label{matrices}}
+
+Una matriz es un arreglo rectangular de
+datos del mismo tipo. No.~No se pueden mezclar.
+
+\hypertarget{creaciuxf3n-de-matrices}{%
+\section{Creación de matrices}\label{creaciuxf3n-de-matrices}}
+
+Para crear una matriz podemos usar la función \texttt{matrix()}. Dicha función requiere de, al menos un vector e indicar al menos una dimensión.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{),}\DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    8
+## [2,]    5   -4
+\end{verbatim}
+
+Se el indica el numero de renglones y el número de columnas como opción usando \texttt{nrow} y \texttt{ncol} respectivamente.
+
+La matriz se llena por renglones hasta completarse
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z<-}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{,}\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{),}\DecValTok{3}\NormalTok{)),}\DataTypeTok{nrow=}\DecValTok{4}\NormalTok{)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]  [,2]
+## [1,]  TRUE  TRUE
+## [2,] FALSE FALSE
+## [3,]  TRUE  TRUE
+## [4,] FALSE FALSE
+\end{verbatim}
+
+¿Por qué sólo es necesario indicar una dimensión?
+
+Podemos decirle a \texttt{R} que cambie el orden con el que llena la matriz, es decir en lugar de que lo haga por columnas, lo haga por renglones
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{),}\DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}\DataTypeTok{byrow=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+\end{verbatim}
+
+\hypertarget{dimensiones-de-un-matriz}{%
+\section{Dimensiones de un matriz}\label{dimensiones-de-un-matriz}}
+
+La dimensión de una matriz es el número de renglones y de columnas respectivamente. Se puede obtener usando
+la función \texttt{dim()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 2
+\end{verbatim}
+
+Así una matriz se distingue de un vector ya que tiene, además de renglones, columnas.
+
+\begin{figure}
+\centering
+\includegraphics{Escalar_Vector_Matriz.jpeg}
+\caption{Escalar, vector y matriz}
+\end{figure}
+
+Una forma \textbf{mucho menos eficiente} de definir una matriz es declarando una matriz sin elementos y después llenándolos de forma explícita
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ y <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\NormalTok{y[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{] <-}\StringTok{ "Esta"}
+\NormalTok{y[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] <-}\StringTok{ "es"}
+\NormalTok{y[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ "una"}
+\NormalTok{y[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{] <-}\StringTok{ "matriz"}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]   [,2]    
+## [1,] "Esta" "una"   
+## [2,] "es"   "matriz"
+\end{verbatim}
+
+\hypertarget{operaciones-con-matrices}{%
+\section{Operaciones con matrices}\label{operaciones-con-matrices}}
+
+\hypertarget{multiplicaciuxf3n-de-un-escalar-con-una-matriz}{%
+\subsection{Multiplicación de un escalar con una matriz}\label{multiplicaciuxf3n-de-un-escalar-con-una-matriz}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3}\OperatorTok{*}\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    6    9
+## [2,]   12   15   18
+\end{verbatim}
+
+\hypertarget{suma-de-dos-matrices}{%
+\subsection{Suma de dos matrices}\label{suma-de-dos-matrices}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OperatorTok{+}\StringTok{ }\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    2    4    6
+## [2,]    8   10   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n<-}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{),}\DataTypeTok{ncol=}\DecValTok{3}\NormalTok{)}
+\NormalTok{m}\OperatorTok{+}\NormalTok{n}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    6    9
+## [2,]    7   10   13
+\end{verbatim}
+
+Para sumar matrices deben tener las mismas dimensiones
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(m)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{dim}\NormalTok{(n)}\OperatorTok{-}\KeywordTok{dim}\NormalTok{(m))}\OperatorTok{==}\DecValTok{0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE
+\end{verbatim}
+
+\hypertarget{multiplicaciuxf3n-de-matrices}{%
+\subsection{Multiplicación de matrices}\label{multiplicaciuxf3n-de-matrices}}
+
+Se utiliza el operador \texttt{\%*\%}. Sí. Son tres caracteres. E incluyen dos \texttt{\%}.
+No hay espacios y es un sólo operador .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n<-}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{),}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{)}
+\NormalTok{n}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    2    5
+## [2,]    3    6
+## [3,]    4    7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m }\OperatorTok{%*%}\StringTok{ }\NormalTok{n }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   20   38
+## [2,]   47   92
+\end{verbatim}
+
+¿Recuerdas cuál es el criterio para calcular el producto de matrices?
+¿Recuerdas cómo se multiplican dos matrices?
+
+\hypertarget{seleccionar-elementos-de-matrices}{%
+\section{Seleccionar elementos de matrices}\label{seleccionar-elementos-de-matrices}}
+
+Para seleccionar elementos de matrices se hace de forma análoga a vectores, es decir, se utiliza el operador \texttt{{[}{]}}. Sólo que esta vez hay que indicar tanto los renglones como la columna en ese orden
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]  }\CommentTok{# Este es el segundo renglón tercera columna de m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]  }\CommentTok{# Este es el elemento que está en el renglón 3 y columna 2 de la matriz n }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\hypertarget{seleccionar-todoa-una-rengluxf3ncolumna}{%
+\subsection{Seleccionar todo(a) un(a) renglón(columna)}\label{seleccionar-todoa-una-rengluxf3ncolumna}}
+
+Para seleccionar todos los elementos de un renglón dado se utiliza la
+siguiente sintáxis
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\DecValTok{2}\NormalTok{,]  }\CommentTok{# Todos los elementos que están en el segundo renglón}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5 6
+\end{verbatim}
+
+Para una columna
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[,}\DecValTok{3}\NormalTok{] }\CommentTok{# Toda la tercera columna}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 6
+\end{verbatim}
+
+\hypertarget{selecccionar-elementos-de-una-matriz}{%
+\subsection{Selecccionar elementos de una matriz}\label{selecccionar-elementos-de-una-matriz}}
+
+¿Qué hace lo siguiente?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{,}\DecValTok{2}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    2    3
+## [2,]    5    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\OperatorTok{-}\DecValTok{1}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\hypertarget{nombres-a-renglones-y-columnas}{%
+\section{Nombres a renglones y columnas}\label{nombres-a-renglones-y-columnas}}
+
+Al igual que con vectores le podemos poner nombres tanto a renglones como a columnas para ello utilizamos \texttt{rownames()} y \texttt{colnames()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m   }\CommentTok{# No tengo nombres :(}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{colnames}\NormalTok{(m)<-LETTERS[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\KeywordTok{rownames}\NormalTok{(m)<-letters[}\DecValTok{5}\OperatorTok{:}\DecValTok{6}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m   }\CommentTok{# Ahora sí. Feos, pero nombres :) :)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   A B C
+## e 1 2 3
+## f 4 5 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\StringTok{"e"}\NormalTok{,}\StringTok{"C"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m[}\StringTok{"e"}\NormalTok{,}\StringTok{"C"}\NormalTok{]}\OperatorTok{==}\NormalTok{m[}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{Estructuras_de_seleccion}{%
+\chapter{Estructuras de selección}\label{Estructuras_de_seleccion}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{if}
+\item
+  \texttt{if} \ldots{} \texttt{else}
+\item
+  \texttt{ifelse}
+\item
+  \texttt{if\ ...\ else\ if\ ...else\ if\ ...else}
+\end{enumerate}
+
+\hypertarget{if-si-condicional}{%
+\section{If (si condicional)}\label{if-si-condicional}}
+
+La instrucción \texttt{if} nos permite probar una condición y esa condición debe arrojar un valor booleano, es decir, un valor de verdad (\texttt{TRUE} o \texttt{FALSE}) Si la condición es verdadera se ejecuta lo que está dentro de los corchetes, de lo contrario, ejecuta lo que sigue después del corchete de cierre.
+
+\textbf{Definición}: Lo que se encuentra dentra del corchete se llama cuerpo ( \emph{body} ) de la declaración \texttt{if}
+
+\begin{figure}
+\centering
+\includegraphics{If_R.001.jpeg}
+\caption{Diagrama de flujo del If}
+\end{figure}
+
+La sintáxis de una condición \texttt{if} consiste en lo siguiente:
+
+\texttt{if\ (condicion)\{}
+
+\texttt{si\ la\ condicion\ es\ verdadera}
+
+\texttt{Ejecuta\ TODO\ lo\ que\ está\ en\ los\ corchetes}
+
+\texttt{\}}
+
+\hypertarget{sintaxis}{%
+\subsection{Sintaxis}\label{sintaxis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\OperatorTok{<}\NormalTok{condition}\OperatorTok{>}\NormalTok{) \{}
+        \CommentTok{## Hace algo}
+\NormalTok{\} }
+\CommentTok{## Continúa con el resto del código}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{errores-comunes-en-el-if}{%
+\subsection{\texorpdfstring{Errores comunes en el \texttt{if}}{Errores comunes en el if}}\label{errores-comunes-en-el-if}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No incializar la variable de la condición.
+\item
+  La condición no arroja un valor de verdad.
+\item
+  No poner todo lo que quieres que haga \textbf{dentro} de los corchetes.
+\item
+  Este no es un error, es más bien una advertencia, si la condición arroja un sólo valor de verdad sólo toma en cuenta el primero de ellos.
+\end{enumerate}
+
+\#\#\#Ejemplos de uso del \texttt{if}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mayor_de_edad<-}\DecValTok{18}
+
+\NormalTok{edad<-}\DecValTok{20}
+
+\ControlFlowTok{if}\NormalTok{(edad }\OperatorTok{>=}\NormalTok{mayor_de_edad)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Eres mayor de edad"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Eres mayor de edad"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\DecValTok{5}\OperatorTok{+}\DecValTok{4}
+\KeywordTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{minimo<-}\DecValTok{20000}
+\NormalTok{dinero<-}\DecValTok{15000}
+
+\ControlFlowTok{if}\NormalTok{(dinero}\OperatorTok{>=}\NormalTok{minimo)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"¿Cómo está Cancún?"}\NormalTok{)}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"La vida es buena"}\NormalTok{)}
+\NormalTok{  sobrante<-dinero}\OperatorTok{-}\NormalTok{minimo}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Me queda $"}\NormalTok{, sobrante))}
+\NormalTok{\}}
+\KeywordTok{print}\NormalTok{(}\StringTok{"Acá sigue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Acá sigue"
+\end{verbatim}
+
+\hypertarget{ejercicios-1}{%
+\subsubsection{Ejercicios}\label{ejercicios-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Elabora un programa que compare tu estatura con tu ídolx y determine si eres más altx.
+\item
+  Toma dos archivos fasta de virus distintos. Leelos con Biostrings y compara sus tamaños ( en bp) y determina si el primero es más grande que el segundo.
+\item
+  A partir del archivo de anotación del genoma de un organismo determina toma dos proteínas al azar y compara sus tamaños. Toma todos los genes de la cadena positiva y todos los de la negativa compara sus tamaños promedio y determina cuál de estos es más grande.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{combinaciuxf3n-de-operadores-booleanos}{%
+\section{Combinación de operadores booleanos}\label{combinaciuxf3n-de-operadores-booleanos}}
+
+Los operadores lógicos o booleanos se pueden combinar para formar enunciados complejos por ejemplo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Tengo vacaciones (del trabajo y/o la escuela)
+\item
+  Tengo dinero
+\end{enumerate}
+
+Si las dos condiciones son ciertas entonces puedo hacer algo
+
+También podría ser que basta con que una de ellas sea cierta para que haga algo.
+
+\hypertarget{and}{%
+\subsection{And (\&)}\label{and}}
+
+El operador booleano \texttt{\&} representa el y lógico. Estos operadores binarios nos sirven para unir al menos dos enunciados que tienen valor de verdadero o falso (Tengo dinero (V/F), Tengo vacaciones (V/F))
+
+Con estas dos operaciones puedo unirlas utilizando el operador \texttt{y} lógico (AND (\texttt{\&}) representado en R con el símbolo del ampersand (\texttt{\&})
+
+Tengo dinero AND Tengo vaciones
+
+Para saber el valor booleano (V/F) del enunciado anterior debemos concocer los valores de verdad de los enunciados por separado
+
+Por ejemplo, podemos representar al primer enunciado por \texttt{p} y al segundo enunciado por \texttt{q}
+
+\texttt{p:\ Tengo\ dinero}
+
+\texttt{q:\ Tengo\ vacaciones}
+
+Para saber cuál es el valor de verdad del enunciado compuesto debemos ver cuáles son todas las combinaciones de valores de verdad de los enunciados que la componen: p verdadero y q verdadero, p falso y q verdadero, p falso y q verdadero, p falso y q falso. Eso se resumen en las tablas de verdad de los operadores
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{Tabla de verdad del AND}\tabularnewline
+\toprule
+p & q & p \& q\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+p & q & p \& q\tabularnewline
+\midrule
+\endhead
+V & V & V\tabularnewline
+V & F & F\tabularnewline
+F & V & F\tabularnewline
+F & F & F\tabularnewline
+\bottomrule
+\end{longtable}
+
+Es decir, el \texttt{\&} solo es \textbf{verdadero} cuando ambas condciones son \textbf{verdaderas}.
+
+Esto representa lo que se observa en la realidad: es decir, solo hago algo si tengo y tengo vacaciones. Si una de ellas no se cumple (es decir, es falsa) entonces no se lleva a cabo la acción.
+
+\hypertarget{or}{%
+\subsection{OR (\textbar{})}\label{or}}
+
+El operador booleano \texttt{\textbar{}} representa el \texttt{o} lógico. Estos operadores binarios nos sirven para unir al menos dos enunciados que tienen valor de verdadero o falso (Tengo dinero (V/F), Tengo vacaciones (V/F))
+
+Con estas dos operaciones puedo unirlas utilizando el operador \texttt{y} lógico (OR (\texttt{\textbar{}}) representado en R con el símbolo de \emph{la barrita} (\texttt{\textbar{}})
+
+Tengo dinero OR Tengo vaciones
+
+Para saber el valor booleano (V/F) del enunciado anterior debemos concocer los valores de verdad de los enunciados por separado
+
+Por ejmplo podemos representar al primer enunciado por \texttt{p} y al segundo enunciado por \texttt{q}
+
+\texttt{p:\ Tengo\ dinero}
+
+\texttt{q:\ Tengo\ vacaciones}
+
+Para saber cuál es el valor de verdad del enunciado compuesto debemos ver cuáles son todas las combinaciones de valores de verdad de los enunciados que la componen: p verdadero y q verdadero, p falso y q verdadero, p falso y q verdadero, p falso y q falso. Eso se resumen en las tablas de verdad de los operadores
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{Tabla de verdad del operador OR}\tabularnewline
+\toprule
+p & q & p \textbar{} q\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+p & q & p \textbar{} q\tabularnewline
+\midrule
+\endhead
+V & V & V\tabularnewline
+V & F & V\tabularnewline
+F & V & V\tabularnewline
+F & F & F\tabularnewline
+\bottomrule
+\end{longtable}
+
+Es decir haría algo, por ejemplo, irme a la playa cuando \textbf{al menos} una condición se cumpla. Por ejemplo que tenga dinero aunque no tenga vacaciones, que tenga vacaciones aunque no tenga dinero y, obviamente, también cuando las dos se cumplen.
+
+Es decir, el \texttt{\textbar{}} solo es \textbf{falso} cuando ambas condiciones son \textbf{falsas}.
+
+\hypertarget{ejemplos-de-combinaciones}{%
+\subsection{Ejemplos de combinaciones}\label{ejemplos-de-combinaciones}}
+
+Por eejmplo es útil para intervalos
+
+\[
+18 \leq edad \leq 29 
+\]
+
+Esta condición la podemos expresar mediante la combinación de dos: la edad debe ser mayor igual a 18 y (\textbf{AND}, \texttt{\&}) la edad debe ser menor o igual que 29
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (edad }\OperatorTok{>=}\StringTok{ }\DecValTok{18} \OperatorTok{&}\StringTok{ }\NormalTok{edad }\OperatorTok{<=}\DecValTok{29}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Te toca vacunarte"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Te toca vacunarte"
+\end{verbatim}
+
+\textbf{Pregunta}: ¿qué pasaría si se pone un \textbf{OR} como unión entre las dos condiciones
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (edad }\OperatorTok{>=}\StringTok{ }\DecValTok{18} \OperatorTok{|}\StringTok{ }\NormalTok{edad }\OperatorTok{<=}\DecValTok{29}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Te toca vacunarte"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Te toca vacunarte"
+\end{verbatim}
+
+o así (¿es lo mismo?)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (edad }\OperatorTok{<=}\StringTok{ }\DecValTok{29} \OperatorTok{|}\StringTok{ }\NormalTok{edad }\OperatorTok{>=}\StringTok{ }\DecValTok{18}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Te toca vacunarte"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Te toca vacunarte"
+\end{verbatim}
+
+\hypertarget{ejercicio}{%
+\section{Ejercicio}\label{ejercicio}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  ¿Cómo harías una condición que considere que te gusta el mole y el pozole?
+\item
+  ¿Cómo harías una condición que considere que te gusta el mole o el pozole?
+\end{enumerate}
+
+\hypertarget{if-else-si-de-otro-modo}{%
+\section{If \ldots{} else (si \ldots{} de otro modo)}\label{if-else-si-de-otro-modo}}
+
+Si además quieres que se ejecute algo cuando la condición es \textbf{falsa} entonces debes usar la declaración \texttt{if\ \ldots{}\ else}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (condición) \{ }\CommentTok{# Si la condición es cierta}
+\NormalTok{hace esto}
+\NormalTok{y esto}
+\NormalTok{y esto}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{ }\CommentTok{# De otro modo, es decir si es falsa hace lo que #está en el corchete}
+\NormalTok{entonces hace esto otro}
+\NormalTok{y esto otro}
+\NormalTok{y esto}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{If_else.001.jpeg}
+\caption{Diagrama\_if\_else}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{minimo<-}\DecValTok{20000}
+\NormalTok{vacaciones<-}\StringTok{"SI"}
+\NormalTok{dinero<-}\DecValTok{21000}
+\ControlFlowTok{if}\NormalTok{(dinero}\OperatorTok{>=}\NormalTok{minimo }\OperatorTok{&}\StringTok{ }\NormalTok{vacaciones}\OperatorTok{==}\StringTok{"SI"}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Me voy a la playa, looser"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Me quedo en mi casa"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Me voy a la playa, looser"
+\end{verbatim}
+
+\hypertarget{ifelse}{%
+\section{ifelse}\label{ifelse}}
+
+Si la condición es muy simple ,tanto para cuando es verdadero como cuando es falso se puede implementar la función \texttt{ifelse} en una línea. Es equivalente a la condición compuesta pero ahorramos código.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edad<-}\DecValTok{21}
+\KeywordTok{ifelse}\NormalTok{(edad}\OperatorTok{>=}\DecValTok{18}\NormalTok{, }\StringTok{"Ya eres grande"}\NormalTok{,}\StringTok{"Todavia no puedes beber (legalmente)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Ya eres grande"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{edad<-}\DecValTok{12}
+\KeywordTok{ifelse}\NormalTok{(edad}\OperatorTok{>=}\DecValTok{18}\NormalTok{, }\StringTok{"Ya eres grande"}\NormalTok{,}\StringTok{"Todavia no puedes beber (legalmente)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Todavia no puedes beber (legalmente)"
+\end{verbatim}
+
+\hypertarget{if-else-if-else-si-si-no-si-si-no-si-si-no}{%
+\section{If \ldots{} else if \ldots{} else ( si, si no si , si no si, si no)}\label{if-else-if-else-si-si-no-si-si-no-si-si-no}}
+
+Si tienes más opciones, es decir no alternativas, puedes usar la sentencia \texttt{if\ \ldots{}\ else\ if\ \ldots{}else\ if\ \ldots{}else}
+
+\begin{description}
+\item[Importante]
+Esta estructura se ejecuta solo en la primera que sea verdadera o si no hay una verdadera ejecuta lo que esta en el \texttt{else}
+\end{description}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ ( condicion }\DecValTok{1}\NormalTok{) \{}
+\NormalTok{Hace cosas}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ ( condcion }\DecValTok{2}\NormalTok{) \{}
+\NormalTok{Hace otras cosas}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ ( condicion }\DecValTok{3}\NormalTok{) \{}
+\NormalTok{Hace estas otras cosas}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{No le queda de otra y hace esto}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{If_else_else_if.001.jpeg}
+\caption{Diagrama de flujo del if\ldots{} else if\ldots{} else if\ldots{}else}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numero<-}\DecValTok{3}
+\ControlFlowTok{if}\NormalTok{(numero }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es positivo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (numero }\OperatorTok{<}\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es negativo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es cero"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Tu número es positivo"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numero<-}\StringTok{ }\DecValTok{-27}
+\ControlFlowTok{if}\NormalTok{(numero }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es positivo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (numero }\OperatorTok{<}\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es negativo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es cero"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Tu número es negativo"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numero<-}\StringTok{ }\DecValTok{0}
+\ControlFlowTok{if}\NormalTok{(numero }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es positivo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (numero }\OperatorTok{<}\DecValTok{0}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es negativo"}\NormalTok{)}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"Tu número es cero"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Tu número es cero"
+\end{verbatim}
+
+\textbf{Pregunta}: ¿por qué no es necesario poner un if en el último else?
+
+\hypertarget{ejercicios-2}{%
+\section{Ejercicios}\label{ejercicios-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Elabora un programa que con tu fecha de cumpleaños te diga en qué estación del año naciste.
+\item
+  Elabora un porgrama que a partir de las calficaciones de tus examenes parciales y 8 quincenales arroje si exentaras o no este curso usando los criterios definidos en el programa del curso. Asume que en las tareas y demás actividades tienes 10.
+\end{enumerate}
+
+\bibliography{book.bib,packages.bib}
+
+\end{document}
