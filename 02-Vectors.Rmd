@@ -1,0 +1,633 @@
+# Vectores en R {#vectors}
+---
+En R puedes guardar muchos elementos del mismo tipo en un sólo objeto mediante vectores.
+
+Un vector es una colección de datos del mismo tipo. Siempre del **mismo tipo**. No es posible mezclarlos.
+
+-----
+
+# Vectores
+
+## Definición
+
+Para definir un vector se utiliza la función c(), que siginfica *combine* 
+
+
+```{r}
+x <- c(1,2,6,90,76.7)
+```
+
+### Longitud de un vector
+
+Para obtener la longitud de un vector, es decir el número de elementos que tiene
+se utiliza la función `length()`
+
+```{r}
+length(x)
+```
+
+Como siempre, para mostrar el contenido de una variable
+sólo es necesario poner la variable y presionar enter en la sesión interactiva, si se está en un *script* es necesario usar la función `print()`
+
+## Uso de la función combine `c()` y el operador `:`
+Un vector se puede definir de forma extensiva, es decir poniendo explícitamente todos los valores del vector.
+
+```{r}
+y<-c("esto","es","un","vector")
+z<-c(1,10,100,1000)
+```
+
+Esto es muy poco eficiente a menos que los vectores sean muy pequeños por lo que existen funciones para generar algunos casos particulares.
+Por ejemplo, si queremos tener un vector que tenga los primeros 100 números enteros podemos definirlo de la siguiente manera con el uso del operador `:` :
+
+```{r}
+x<-1:100;
+x
+```
+También se puede usar de forma equivalente la función `seq()` que significa sequence. `seq()` es una generalización del operador `:`,
+```{r}
+x<-seq(1,100)
+x
+```
+
+con ella podemos generar secuencias numéricas de distintas clase y espaciadas por diferentes rangos. Por  ejemplo si queremos tener una secuencia de -12 a 30 en pasos de 3, es decir -12, -9,-6,..., 27,30
+Teclearíamos 
+
+```{r}
+x<-seq(from=-12,to=30,by=3)
+x
+```
+Podemos omitir los nombres from, to,by si usamos el mismo orden, si queremos intercambiarlo debemos necesariamente ponerlos
+
+```{r}
+y<-seq(0,1,0.1)
+y
+```
+
+
+```{r}
+z<-seq(by=0.1, to =1, from=0.5)
+z
+```
+
+## Acceder a elementos de un vector
+
+### Elementos consecutivos de un vector
+
+Para acceder a elemetnos de un objeto con índices en R debemos usar los
+corchetes `[]` para indicarle que queremos seleccionar esos objetos
+
+```{r}
+x<-c("Muchos", "años" ,"después" ,",", "frente", "al" ,"pelotón")
+x[1:4]
+```
+
+`
+
+```{r}
+x<-c(1,2,3,5,8,13,21)
+x[3:6]
+```
+
+
+
+### Elementos no consecutivos de un vector
+
+
+Para seleccionar elementos no consecutivos definimos un nuevo vector (con la función `c()` ) de  índices que seleccionará los elementos que quieres
+
+```{r}
+x<-c("Muchos", "años" ,"después" ,",", "frente", "al" ,"pelotón")
+x[c(1,3,5,7)]
+```
+
+No es necesario que estén  en orden
+
+
+
+```{r}
+x<-c(1,2,3,5,8,13,21)
+x[c(2, 7, 4)]
+```
+
+
+
+### Excluir elementos de un vector
+
+Para seleccionar algunos elementos **excepto** un conjunto de ellos usamos
+el signo menos `-`
+
+
+
+```{r}
+x<-c(1,2,3,5,8,13,21)
+x[-2]
+```
+
+
+```{r}
+# Todos menos el segundo elemento
+x[-c(2, 7, 4)]   # Todos menos el segundo , séptimo y cuarto elemento
+x[-length(x)]    # ¿Esto qué hace?
+```
+
+Este comando **no elimina** elementos de un vector sólo los selecciona
+
+```{r}
+x<-c(1,2,3,5,8,13,21)
+x[-6] 
+x     # Estoy intacto
+```
+
+
+## Agregar y quitar elementos de un vector
+
+```{r}
+x <- c(88,5,12,13)
+x <- c(x[1:3],168,x[4]) 
+x
+```
+
+Podemos, incluso, definir un vector vacío y luego "llenarlo"
+
+```{r}
+x<-c()
+x                 # Soy un vector vacío :(
+x[1]<- 2
+x[2:5]<-c(56,78,90,12)
+x                 # Ahora ya no :)
+```
+
+## Repetición de elementos de un vector con `rep()`
+
+La función `rep()`  que viene del inglés *repeat* nos permite repetir elementos en un vector dado. Por ejemplo, `rep(x,n veces)`
+
+
+
+```{r}
+x<-rep(3,5)
+x
+y<-rep(c(1,2,3,5),3)
+y
+```
+
+```{r}
+primos<-c(1,2,3,5,7,11)
+z<-rep(primos,4)
+z
+```
+
+También podemos usar la opción `each` para indicar la frecuencia de repetición
+
+```{r}
+x<-c(1,2,3,4)
+y<-rep(x,each=2)
+y
+```
+
+
+## Uso de funciones `any()` y `all()`
+
+Las funciones `any()` y `all()` determinan si alguno o todos los elementos de un vector cumplen cierta condición respectivamente. La respuesta siempre será un valor booleano es decir: **TRUE** o **FALSE**
+
+
+```{r}
+x<- 1:15
+any(x > 7.5)
+```
+
+```{r}
+any(x > 19.76)
+any(x >= 15)
+```
+
+
+```{r}
+all(x> sqrt(100))
+```
+
+```{r}
+all(x>0)
+```
+## Operaciones con vectores
+
+Al igual que en álgebra podemos definir varias operaciones que nos dejan siempre otro vector:
+
+1. Suma (resta) de vectores
+2. Producto de vectores (término a término)
+3. Producto de un escalar por un vector
+
+
+```{r}
+x<-c(1,2,3)
+y<-c(4,5,6)
+x + y 
+x-y
+x*x
+y*y
+x*y
+3*x                #Multiplicación por escalar: término a término
+sqrt(2)*y          # Sí, por cualquier escalar!
+3*x + sqrt(2)*y    # Operaciones más complejas
+```
+ 
+También podemos aplicar funciones para calcular con una sola instrucción varias operaciones útiles, por ejemplo `min()`, `max()`, `range()` , 
+ `sum()`, `mean()`, `median()`, `sd()`,`quantile()`,`unique()`,`sort()`
+ Si tienes duda de qué hace alguna de ellas busca en la ayuda
+ 
+```{r}
+x<-rnorm(1000)
+min(x)
+max(x)
+range(x)
+sum(x)
+mean(x)
+median(x)
+sd(x)
+quantile(x)
+```
+ 
+ Para `unique()` y `sort()` conviene tener elementos discretos más que continuos
+ 
+```{r}
+x<- c(rep(3,5),1:15,rep(c(1,2,3),5))
+unique(x)
+```
+ 
+ 
+```{r}
+x<-sample(10,10)
+x
+sort(x)
+```
+ 
+## Gráficos con vectores
+
+Podemos graficar los vectores de manera inmediata en `R`
+
+```{r}
+x<- rnorm(10000)
+hist(x,col="tomato2")
+plot(x,col="salmon")
+boxplot(x,col="wheat")
+```
+
+
+## Vectores con nombre
+
+Definimos un vector llamado edades 
+```{r}
+edades<-c(35,35,70,17,14)
+edades
+```
+
+Podemos definir un vector del mismo tamaño que `edades` llamado nombres
+
+```{r}
+nombres <-c("Jerry","Beth","Rick", "Summer","Morty")
+nombres
+```
+
+Una de las cracterísticas de R es que podemos asignarles nombres a los vectores, para ello usamos la función `names()`
+
+
+```{r}
+names(edades)<-nombres
+```
+
+Con ello ahora el vector edades tiene una nueva característica:
+
+```{r}
+edades
+```
+
+Podemos selecccionar de la manera usual, por ejemplo, si quiero ver cuál es la edad de Rick, debo seleccionar el 3 elemento
+
+```{r}
+edades[3]
+```
+
+Esto es  muy poco eficiente y propenso al error sobre todo con vectores muy grandes. Por ello podemos usar los nombres de los vectores 
+
+```{r}
+edades["Rick"]
+```
+
+
+**Recuerda que los nombres S-I-E-M-P-R-E van entre comillas**
+
+```{r}
+edades[c("Rick","Morty")]
+```
+
+
+**Ejercicios:**
+
+1. ¿Cuál es el promedio de las edades, sin contar el de Beth?
+2. Quiten a Morty del vector, ordénenlo y guárdenlo como un nuevo objeto.
+3. ¿Hay alguna edad que sea mayor de 75? ¿Menor de 12? ¿Entre 12 y 20?
+
+
+### Tamaños de genomas 
+
+Ahora veamos un ejemplo más "biológico"
+
+
+
+```{r}
+genomeSizeM_BP<-c(3234.83,2716.97,143.73,0.014281,12.1)
+```
+
+Por ejemplo si quisierámos ver el tamño en bp simplemente multiplicamos por el valor del prefijo Mega = 1 millón
+
+```{r}
+genomeSizeM_BP*1e6
+```
+
+
+```{r}
+organismo<-c("Human","Mouse","Fruit Fly","Roundworm","Yeast")
+```
+
+
+```{r}
+names(genomeSizeM_BP) <- organismo
+```
+
+
+```{r}
+genomeSizeM_BP
+```
+
+
+
+Se pueden seleccionar elementos de un vector utilizando corchetes 
+
+```{r}
+genomeSizeM_BP[1]
+```
+
+
+Para obtener elementos consecutivos 
+
+```{r}
+genomeSizeM_BP[1:4]
+```
+
+Para obtener elementos NO consecutivos
+
+```{r}
+genomeSizeM_BP[c(1,2,5)]
+```
+
+
+Para selecciona (no eliminar, ni quitar)  elementos excepto algunos
+
+
+```{r}
+genomeSizeM_BP[-c(1,3,5)]
+```
+
+Para referirnos a los elementos por su nombre
+
+```{r}
+genomeSizeM_BP[c("Yeast","Human")]
+```
+
+Además de algunas operaciones aritméticas, se pueden calcular la media, máximo, mediana, mínimo, suma y longitud de los vectores
+
+**Ejercicio**
+
+1. Generar un vector de las edades de 10 de tus compañeros 
+2. Asignales nombre.
+3. Encuentra el mínimo,máximo, media, mediana, la desviación estándar, la longitud del vector y selecciona sólo los elementos impares.
+4. Elimina el máximo y el mínimo y con el vector resultante realiza un histograma.
+5. Crea un vector de caracteres con diez nombres de especies y asocialo con su número de acceso de NCBI para su genoma en nucleótidos.
+
+## ¿Cómo lidiar con las NAs ?
+
+Es (muy) freceunte que en bases de datos se tengan valores `NA`, es decir medidas que no pudieron realizarse, medidas perdidas, etc. Para ello se utiliza `NA`. `R` trata de manera especial a las NAs
+
+```{r}
+x <- c(88,NA,12,168,13)
+```
+Existe una fución para determinar si un elemento es o no una `NA`. La función es `is.na()`
+
+
+
+```{r}
+x <- c(88,NA,12,168,13)
+```
+
+
+```{r}
+is.na(x)
+```
+
+Si queremos calcular ciertas funciones numéricas `R` no sabrá qué hacer
+
+```{r}
+x <- c(88,NA,12,168,13)
+mean(x)
+```
+
+Sin emabrgo, podemos decirle a `R` que las omita, indicando como argumento de la función `mean()` `na.rm=TRUE` que significa *na remove*
+
+
+```{r}
+x <- c(88,NA,12,168,13)
+mean(x,na.rm=TRUE)
+
+```
+
+¿Qué otras funciones tienen esta opción?
+
+## Filtrado de elementos de un vector
+
+Podemos generar vectores de que sean subconjuntos de vectores más grandes que cumplan cierta(s) condición(es)
+
+```{r}
+un_vector<-c(1,2,3,5,7,11,13,17,19) 
+otro_vector <- un_vector[un_vector*un_vector > 10]   # Leeme de adentro hacia afuera
+otro_vector
+```
+
+
+Veamos paso a paso qué es lo que hace este proceso
+
+```{r}
+un_vector
+un_vector*un_vector > 10    # Mira, de adentro hacia afuera
+indices<-un_vector*un_vector > 10 
+un_vector[indices]
+un_vector[c(FALSE,FALSE,FALSE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE)]
+```
+
+la representación interna de los valores booleanos `FALSE` y `TRUE`son 0 y 1 respectivamente
+
+```{r}
+un_vector[c(rep(0,3),rep(1,1))]
+```
+
+### Filtrado con `subset()`
+
+Podemos usar la función `subset()`para hacer lo mismo que en el caso anterior **excepto que omite los NA**
+
+
+
+```{r}
+un_vector<-c(1,2,3,5,7,11,13,17,19) 
+otro_vector <- subset(un_vector,un_vector*un_vector > 10)   
+otro_vector
+```
+
+
+
+Qué pasa si tenemos `NA`s. Si usamos el método anterior obtendríamos
+
+
+```{r}
+un_vector<-c(1,2,3,5,7,11,NA,13,17,NA,19) 
+otro_vector <- un_vector[un_vector*un_vector > 10]   # Leeme de adentro hacia afuera
+otro_vector  # Aquí salen las NAs
+```
+
+
+
+En cambio con `subset()`
+```{r}
+un_vector<-c(1,2,3,5,7,11,NA, 13,17,NA, 19) 
+otro_vector <- subset(un_vector,un_vector*un_vector > 10)   
+otro_vector  # Aquí ya no aparecen las NAs
+```
+
+
+### La función de selección `which()`
+
+La función `which()` nos regresa los índices es decir nos dicen **quiénes** cumplen cierta condición
+
+
+```{r}
+z <- c(5,2,-3,8)
+which(z*z > 8)
+
+```
+
+Acá nos dicen quiénes
+
+```{r}
+z[which(z*z > 8)]
+```
+
+## ¿Cómo podemos ver si dos vectores son iguales?
+
+Dos vectores son iguales si elemento a elemento son idénticos.
+Por lo tanto deben de ser del mismo tamaño. Para probar si dos elementos son iguales se utiliza el operador de comparación `==` son dos signos iguales juntos, sin espcaio. No confundir con el operador `=` que se puede usar como operador de asiganción (aunque no es recomendable su uso. De hecho está prohibido en este curso)
+
+```{r}
+x<-c(1,4,9,16,25)
+y<-1:5
+y<-y*y
+```
+
+
+```{r}
+x==y
+```
+
+¿Qué pasaría si me confundo y escribo el operador de igualdad en lugar del de comparación?
+
+
+```{r}
+y <-5:9
+y
+```
+
+```{r}
+x=y
+```
+
+
+```{r}
+x
+y
+```
+
+Para vectores grandes puedo usar la función `all()` que ya vimos arriba
+
+
+```{r}
+x <- seq(1,10000,1)
+y <- seq(1,10000,1)
+all(x==y)
+```
+¿Cómo podríamos corrobar que son iguales usando `any`?
+
+También podríamos utilizar que `TRUE` es `1` y que `FALSE`  es `0`
+
+¿Por qué este código nos dice que sí son iguales?
+
+```{r}
+sum(x==y)
+```
+
+
+### Factor
+
+Los factores son un tipo de vector que puede tomar un número "limitado" de valores, que normalmente se utilizan como variables categóricas. Por ejemplo: macho/hembra. Es útil tenener este tipo de objeto porque varios modelos estadísticos que se pueden correr en `R` los utilizan. A los valores que pueden tomar los elementos del factor se les conoce como *levels*.
+
+
+```{r}
+x<- c(1,2,2,3,1,2,3,3,1,2,3,3,1)
+x
+as.factor(x)
+x<-as.factor(x)
+x
+```
+
+
+Los factores son una manera computacionalmente eficiente de almacenar caracteres, pues cada valor único (level) se guarda solo una vez y a los datos se les asigna un valor entero. 
+
+```{r}
+meses = c("March","April","January","November","January",
+       "September","October","September","November","August",
+        "January","November","November","February","May","August",
+        "July","December","August","August","September","November",
+         "February","April")
+meses
+meses<-as.factor(meses)
+meses
+```
+
+
+El que existan los levels permite realizar ciertas operaciones y manipular el contenido del factor.
+
+```{r}
+table(meses)
+levels(meses)
+levels(meses)[1]
+levels(meses)[1]<-"Abril"
+levels(meses)
+meses
+```
+
+**Ejercicio** 
+
+1. Lee la ayuda de `as.factor` para determinar cómo crear un factor "ordenado"
+2. Crea un vector con los meses en los que todas las alumnas del grupo cumplen años.
+3. Aprovecha los levels para generar un objeto que guarde el número de estudiantes que cumplena ño cada mes.
+
+
+**Ejercicio**
+
+1. Genera un vector con el nombre de 10 virus
+2. Asocia esos nombres con su número de acceso en NCBI
+3. Genera otro vector que contega los tamaños en pb y los nombres
+4. Determina cuáles son mayores de 300 bp
+5. Asocia un subconjunto de vectores que sean mayores (menores a 300 bp) y mayores (mayores a 300 bp)
+6. Haz un histograma con los tamaños de todos
+7. Dibuja un boxplot con los tamaños de todos.Pon en el eje los nombres de todos.
+
+
+
+

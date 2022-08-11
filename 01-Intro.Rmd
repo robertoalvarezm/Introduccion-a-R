@@ -1,0 +1,282 @@
+# Introducción a R {#intro}
+R es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:
+
+1. Software libre.
+2. Facilidad para el manejo y almacenamiento de datos.
+3. Un conjunto de operadores para el cálculo de vectores y matrices.
+4. Una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
+5. Multitud de facilidades gráficas de altísima calidad
+6. Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.
+7. La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
+8. **Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar...), sin embargo es más  díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.**
+
+## Paquetes o bibliotecas
+
+Las funciones especializadas de R se guardan en paquetes *(packages)* que deben ser invocados ANTES de  llamar a una función del paquete
+
+
+Una manera de instalar paquetes es mediante el repositorio [CRAN](https://cran.r-project.org/). 
+
+Navega por CRAN y encuentra algunos paquetes que podrían interesarte. Hay miles y cada día aumentan.
+
+Para saber qué paquetes se tienen instalados en
+tu máquina teclea la función library()
+
+```{r}
+library()
+```
+
+
+Para cargar un paquete en particular deben teclear, siempre y cuando ya esté instalado
+
+`library(nombre_de_paquete)`
+
+Por ejemplo
+```{r}
+library(gplots)  
+```
+
+Para visualizar los paquetes ya cargados tecleamos
+
+```{r}
+search()
+```
+
+Para visualizar las funciones dentro de un paquete en particular se utiliza
+
+```{r}
+ls(2)
+```
+
+ 
+
+```{r}
+demo(graphics)
+```
+## Ayuda en R
+
+help(nombre_comando) o ?nombre_comando
+
+```{r}
+help(solve)
+```
+
+```{r}
+?solve
+```
+
+son equivalentes para buscar ayuda sobre el comando solve
+
+Para buscar ayuda de funciones o palabra reservadas se utilizan comillas
+
+```{r}
+help("for")
+```
+
+Para abrir la ayuda genral en un navegador (sólo si tenemos la ayuda en HTML instalada y tenemos conexión a la red) se utiliza
+
+```{r}
+help.start()
+```
+
+```{r}
+help.search("clustering")
+```
+
+Si queremos ver ejemplos del uso de los comandos usamos la función ejemplo
+
+
+```{r}
+example("hclust")
+```
+
+ Todo lo anterior requiere que conzocamos el nombre correcto del comando, pero ¿qué pasa si no lo sabemos?
+ Podemos utilizar el comando `apropos()` para encontrar todo lo relacionado con algún término
+ 
+ 
+ 
+```{r}
+apropos("solve")
+```
+
+## Expresiones y asignaciones
+
+Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo se muestran a la salida estándar y NO se guardan en una variables; las segundas se asignan y guardan en una variable
+
+```{r}
+rnorm(10)
+```
+
+```{r}
+x <- rnorm(10)
+```
+
+
+```{r}
+x
+```
+
+![Operado de asignación. Evitar el uso del igual](equals-sign-assignment-operator-imgflip-com-going-through-data-structures-and-47188178.png)
+
+R distingue entre mayúsculas y minúsculas, así las siguientes variables contienen valores distintos
+
+```{r}
+a <- 3
+```
+
+
+```{r}
+A <- 6
+```
+
+Los comandos pueden separarse por `;` o - mejor opción- por un salto de línea
+
+```{r}
+a <- 3; b <-5
+```
+ también pueden definirse asignaciones en más de una línea
+ 
+```{r}
+a <-
+  pi + 12
+```
+
+
+## Movimiento entre directorios
+
+
+Para saber en qué directorio estamos tecleamos 
+
+```{r}
+getwd()
+```
+
+Para cambiar de directorio utilizamos `setwd("direccion_a_la_que_quieres_ir")` 
+
+                              
+```{r}
+setwd("~")
+```
+
+También podemos usar los comandos de bash dentro de R, utilizando la función `system()`
+
+```{r}
+system("ls -la")
+```
+
+
+```{r}
+system("pwd")
+```
+
+## Importante
+
+**Como regla general todos los nombres van entre comillas: nombre de carpetas, archivos, de columnas, de renglones,etc.**
+
+
+## Operaciones aritméticas
+
+Se puede sumar, restar, multiplicar,dividir, "exponenciar" y calcular la raíz cuadrada.
+Los operadores son, respectivamente: `+`,`-`,`*`, `/`,`**` o `^`, `sqrt()`
+
+```{r}
+a + b
+```
+
+```{r}
+a - b
+```
+
+```{r}
+a * b
+```
+
+
+```{r}
+a ** b
+```
+
+
+```{r}
+a ^ b
+```
+
+
+```{r}
+sqrt(a)
+```
+
+## Prioridad en las operaciones
+
+Las operaciones se efectuan en el siguiente orden:
+
+1. izquierda a derecha
+2. sqrt() y ** , ^
+3. "*" y /
+4. "+" y -
+5. <-
+
+Este orden se altera si se presenta un paréntesis. En ese caso la operación dentro del paréntesis es la que se realiza primero.
+
+Ejemplos
+
+4 + 2 *3 = 4 + 6 = 10
+
+4-15/3 +3^2 +sqrt(9)= 4-15/3 + 9 +3 = 4-5+12=13
+
+4-(3+7)^2 + (2+3)/5=4-100+5/5=-95
+
+
+### Ejercicios
+
+Resuelve en un pedazo de papel primero para saber cuál sería el resultado de las siguientes operaciones aritméticas. Después comprueba tu resultado tecleandolas en R
+
+
+1. 1 + 2*3 +3 +15/3
+2. 4-15/3 +3^2 +3*sqrt(81)
+3. 40-(4+3)^2 + (10-5)/3
+
+
+
+
+## Tipos de datos lógicos o booleanos
+
+Estos tipos de datos **sólo** contienen información `TRUE` o `FALSE`. Sirven para evaluar expresiones de =, <, > y pueden utilizarse para obtener los elementos de un vector que cumplan con la característica deseada.
+
+
+```{r}
+1 < 5
+10 == 0  # Es igual a
+10 != 0    # NO es igual a
+10 <= 0    #Menor o igual 
+```
+
+Dentro de R un valor lógico `TRUE` equivale a 1 y `FALSE` equivale a 0, por lo tanto para contar cuántos `TRUE`s hay podemos hacer una suma:
+
+
+
+**Ejercicio** utiliza una sola líndea de R para averiguar si el logaritmo base de 10 de 20 es menor que la raiz cuadrada de 4.
+
+### Caracter
+
+Son *strings* de texto. Se distingue porque los elementos van entre comillas (cada uno). Puede ser desde un sólo caracter hasta oraciones completas. Puede parecer que contienen números, pero las comillaa indican que serán tratados como texto. Podemos subsetearlos por su índice o buscando literalmente el texto.
+
+
+```{r}
+x<- "La candente mañana de febrero en que Beatriz Viterbo murió, después de una imperiosa agonía que no se rebajó un solo instante ni al sentimentalismo ni al miedo"
+```
+
+
+### Enteros y números (numeric)
+
+R por default representa los números como `numeric`, NO `integer`. Estos tipos son dos formas diferentes en las cuales las computadoras pueden guardar los números y hacer operaciones matemáticas con ellos. Por lo común esto no importa, pero puede ser relevante para algunas funciones de Bioconductor, por ejemplo ya que el tamaño máximo de un `integer` en R es ligeramente más chico que el tamaño del genoma humano. 
+
+
+¿Cómo revisar si un objeto es numeric o entero?
+
+```{r}
+x <- 1
+class(x)
+x <- 1:3
+class(x)
+```
