@@ -8,7 +8,7 @@ R es un entorno integrado para el manejo de datos, el cálculo, la generación d
 5. Multitud de facilidades gráficas de altísima calidad
 6. Un lenguaje de programación (muy) poderoso con muchas libreráis especializadas disponibles.
 7. La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
-8. **Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar...), sin embargo es más  díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.**
+8. **Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar por la licencia...), sin embargo es más  díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.**
 
 ## Paquetes o bibliotecas
 
