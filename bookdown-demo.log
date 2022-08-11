@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  11 AUG 2022 12:28
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  11 AUG 2022 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1483,15 +1483,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (typ
 e QTm)
 <use  "bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf" > [24]
-Overfull \hbox (20.75pt too wide) in paragraph at lines 699--699
-[]\EU1/lmtt/m/n/10 ##  [1] -1.5722350  0.9601945 -0.1204486 -2.0042524  0.93819
-18 -0.1460520[] 
+Overfull \hbox (22.5pt too wide) in paragraph at lines 699--699
+[]\EU1/lmtt/m/n/10 ##  [1] -0.1716448  1.4526893 -1.0530903 -2.2733414 -0.23166
+47 -0.8530936[] 
  []
 
 
-Overfull \hbox (20.75pt too wide) in paragraph at lines 718--718
-[]\EU1/lmtt/m/n/10 ##  [1] -0.3588845 -0.3139275 -0.5939401  2.0301381 -0.18333
-58  0.6998264[] 
+Overfull \hbox (17.25pt too wide) in paragraph at lines 718--718
+[]\EU1/lmtt/m/n/10 ##  [1] -1.018392201  0.179918391 -1.548948043 -0.003656243 
+ 1.254465598[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 718--718
+[]\EU1/lmtt/m/n/10 ##  [6]  1.040747835 -0.830077433 -0.402493455 -0.125983012 
+ 0.552845542[] 
  []
 
 File: equals-sign-assignment-operator-imgflip-com-going-through-data-structures
