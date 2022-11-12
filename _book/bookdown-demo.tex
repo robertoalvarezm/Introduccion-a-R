@@ -33,14 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Notas de R},
-  pdfauthor={Roberto Álvarez},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -121,10 +113,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Notas de R},
+  pdfauthor={Roberto Álvarez},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Notas de R}
 \author{Roberto Álvarez}
-\date{2022-08-11}
+\date{2022-11-12}
 
 \begin{document}
 \maketitle
@@ -139,7 +139,7 @@
 \hypertarget{intro}{%
 \chapter{Introducción a R}\label{intro}}
 
-R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
+R es un lenguaje de programación. Sin emabrgo es, además, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
 Las principales ventajas del uso de R son:
 
 \begin{enumerate}
@@ -192,6 +192,10 @@ Por ejemplo
 \FunctionTok{library}\NormalTok{(gplots)  }
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'gplots' was built under R version 4.2.2
+\end{verbatim}
 
 \begin{verbatim}
 ## 
@@ -518,6 +522,10 @@ help(nombre\_comando) o ?nombre\_comando
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## starting httpd help server ... done
+\end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{?solve}
@@ -543,13 +551,8 @@ Para abrir la ayuda genral en un navegador (sólo si tenemos la ayuda en HTML in
 \end{Shaded}
 
 \begin{verbatim}
-## starting httpd help server ... done
-\end{verbatim}
-
-\begin{verbatim}
-## If the browser launched by '/usr/bin/open' is already running, it is
-##     *not* restarted, and you must switch to its window.
-## Otherwise, be patient ...
+## If nothing happens, you should open
+## 'http://127.0.0.1:21000/doc/html/index.html' yourself
 \end{verbatim}
 
 \begin{Shaded}
@@ -668,18 +671,6 @@ Podemos utilizar el comando \texttt{apropos()} para encontrar todo lo relacionad
 ## [5] "solve.default" "solve.qr"
 \end{verbatim}
 
-\hypertarget{sesiones-interactivas}{%
-\subsection{Sesiones interactivas}\label{sesiones-interactivas}}
-
-En R también podmeos generar elementos interactivos con la bilioteca \textbf{shiny}
-
-\begin{verbatim}
-## 
-## Listening on http://127.0.0.1:7979
-\end{verbatim}
-
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf}
-
 \hypertarget{expresiones-y-asignaciones}{%
 \section{Expresiones y asignaciones}\label{expresiones-y-asignaciones}}
 
@@ -694,8 +685,8 @@ Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -0.1716448  1.4526893 -1.0530903 -2.2733414 -0.2316647 -0.8530936
-##  [7] -0.7207306 -1.4432143  0.4579468  0.9846732
+##  [1]  1.03746929 -1.50509693 -1.55559556 -1.78674322  0.70866779 -0.07570501
+##  [7]  0.77629286 -0.05645851  0.24165206  0.91971419
 \end{verbatim}
 
 \textbf{Asignación}
@@ -713,8 +704,8 @@ Hay dos tipos de resultados en R: expresiones y asignaciones. Las primeras sólo
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -1.018392201  0.179918391 -1.548948043 -0.003656243  1.254465598
-##  [6]  1.040747835 -0.830077433 -0.402493455 -0.125983012  0.552845542
+##  [1]  0.64566540  0.47348204  0.09108498 -0.13158381  1.07381625  0.42410404
+##  [7]  0.85753656 -0.86105859 -1.43004649 -0.70304695
 \end{verbatim}
 
 \begin{figure}
@@ -766,7 +757,7 @@ Para saber en qué directorio estamos tecleamos
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "/Users/robertoalvarez/Dropbox/UAQ/Bioinformatica/Introduccion-a-R.github.io"
+## [1] "C:/Users/rober/OneDrive - UAQ/Introduccion-a-R.github.io/Introduccion-a-R.github.io"
 \end{verbatim}
 
 Para cambiar de directorio utilizamos \texttt{setwd("direccion\_a\_la\_que\_quieres\_ir")}
@@ -785,11 +776,27 @@ También podemos usar los comandos de bash dentro de R, utilizando la función \
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Warning in system("ls -la"): 'ls' not found
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 127
+\end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{system}\NormalTok{(}\StringTok{"pwd"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning in system("pwd"): 'pwd' not found
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 127
+\end{verbatim}
 
 \hypertarget{importante}{%
 \section{Importante}\label{importante}}
@@ -1508,7 +1515,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -3.391984
+## [1] -3.26703
 \end{verbatim}
 
 \begin{Shaded}
@@ -1518,7 +1525,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.272995
+## [1] 3.389693
 \end{verbatim}
 
 \begin{Shaded}
@@ -1528,7 +1535,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -3.391984  3.272995
+## [1] -3.267030  3.389693
 \end{verbatim}
 
 \begin{Shaded}
@@ -1538,7 +1545,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 47.97739
+## [1] 36.30151
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1555,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.04797739
+## [1] 0.03630151
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1565,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.07476406
+## [1] 0.005197452
 \end{verbatim}
 
 \begin{Shaded}
@@ -1568,7 +1575,7 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.01136
+## [1] 0.9756999
 \end{verbatim}
 
 \begin{Shaded}
@@ -1578,8 +1585,8 @@ Si tienes duda de qué hace alguna de ellas busca en la ayuda
 \end{Shaded}
 
 \begin{verbatim}
-##          0%         25%         50%         75%        100% 
-## -3.39198383 -0.63919644  0.07476406  0.71303347  3.27299540
+##           0%          25%          50%          75%         100% 
+## -3.267029989 -0.590775367  0.005197452  0.728783295  3.389693336
 \end{verbatim}
 
 Para \texttt{unique()} y \texttt{sort()} conviene tener elementos discretos más que continuos
@@ -1603,7 +1610,7 @@ Para \texttt{unique()} y \texttt{sort()} conviene tener elementos discretos más
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  6  7  5  9 10  8  4  3  1  2
+##  [1]  6  8  5  1 10  7  9  2  4  3
 \end{verbatim}
 
 \begin{Shaded}
@@ -1628,7 +1635,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1636,7 +1643,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-2.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1644,7 +1651,7 @@ Podemos graficar los vectores de manera inmediata en \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-62-3.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-61-3.pdf}
 
 \hypertarget{vectores-con-nombre}{%
 \section{Vectores con nombre}\label{vectores-con-nombre}}
@@ -2898,19 +2905,19 @@ Para saber cuál es el valor de verdad del enunciado compuesto debemos ver cuál
 
 \begin{longtable}[]{@{}ccc@{}}
 \caption{Tabla de verdad del AND}\tabularnewline
-\toprule
+\toprule()
 p & q & p \& q \\
-\midrule
+\midrule()
 \endfirsthead
-\toprule
+\toprule()
 p & q & p \& q \\
-\midrule
+\midrule()
 \endhead
 V & V & V \\
 V & F & F \\
 F & V & F \\
 F & F & F \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 Es decir, el \texttt{\&} solo es \textbf{verdadero} cuando ambas condciones son \textbf{verdaderas}.
@@ -2938,19 +2945,19 @@ Para saber cuál es el valor de verdad del enunciado compuesto debemos ver cuál
 
 \begin{longtable}[]{@{}ccc@{}}
 \caption{Tabla de verdad del operador OR}\tabularnewline
-\toprule
+\toprule()
 p & q & p \textbar{} q \\
-\midrule
+\midrule()
 \endfirsthead
-\toprule
+\toprule()
 p & q & p \textbar{} q \\
-\midrule
+\midrule()
 \endhead
 V & V & V \\
 V & F & V \\
 F & V & V \\
 F & F & F \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 Es decir haría algo, por ejemplo, irme a la playa cuando \textbf{al menos} una condición se cumpla. Por ejemplo que tenga dinero aunque no tenga vacaciones, que tenga vacaciones aunque no tenga dinero y, obviamente, también cuando las dos se cumplen.

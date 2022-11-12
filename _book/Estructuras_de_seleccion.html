@@ -7,7 +7,7 @@
 <title>Chapter 5 Estructuras de selección | Notas de R</title>
 <meta name="author" content="Roberto Álvarez">
 <meta name="description" content="if if … else ifelse if ... else if ...else if ...else  5.1 If (si condicional) La instrucción if nos permite probar una condición y esa condición debe arrojar un valor booleano, es decir, un valor...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Estructuras de selección | Notas de R">
 <meta property="og:type" content="book">
 <meta property="og:description" content="if if … else ifelse if ... else if ...else if ...else  5.1 If (si condicional) La instrucción if nos permite probar una condición y esa condición debe arrojar un valor booleano, es decir, un valor...">
@@ -85,10 +85,10 @@
 <h3>
 <span class="header-section-number">5.1.1</span> Sintaxis<a class="anchor" aria-label="anchor" href="#sintaxis"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb324"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb324-1"><a href="Estructuras_de_seleccion.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">&lt;</span>condition<span class="sc">&gt;</span>) {</span>
-<span id="cb324-2"><a href="Estructuras_de_seleccion.html#cb324-2" aria-hidden="true" tabindex="-1"></a>        <span class="do">## Hace algo</span></span>
-<span id="cb324-3"><a href="Estructuras_de_seleccion.html#cb324-3" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb324-4"><a href="Estructuras_de_seleccion.html#cb324-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Continúa con el resto del código</span></span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb328-1"><a href="Estructuras_de_seleccion.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">&lt;</span>condition<span class="sc">&gt;</span>) {</span>
+<span id="cb328-2"><a href="Estructuras_de_seleccion.html#cb328-2" aria-hidden="true" tabindex="-1"></a>        <span class="do">## Hace algo</span></span>
+<span id="cb328-3"><a href="Estructuras_de_seleccion.html#cb328-3" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb328-4"><a href="Estructuras_de_seleccion.html#cb328-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Continúa con el resto del código</span></span></code></pre></div>
 </div>
 <div id="errores-comunes-en-el-if" class="section level3" number="5.1.2">
 <h3>
@@ -101,7 +101,7 @@
 <li>Este no es un error, es más bien una advertencia, si la condición arroja un sólo valor de verdad sólo toma en cuenta el primero de ellos.</li>
 </ol>
 <p>###Ejemplos de uso del <code>if</code></p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mayor_de_edad</span><span class="op">&lt;-</span><span class="fl">18</span></span>
 <span></span>
 <span><span class="va">edad</span><span class="op">&lt;-</span><span class="fl">20</span></span>
@@ -110,11 +110,11 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Eres mayor de edad"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <pre><code>## [1] "Eres mayor de edad"</code></pre>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">&lt;-</span><span class="fl">5</span><span class="op">+</span><span class="fl">4</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
-<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">minimo</span><span class="op">&lt;-</span><span class="fl">20000</span></span>
 <span><span class="va">dinero</span><span class="op">&lt;-</span><span class="fl">15000</span></span>
 <span></span>
@@ -249,19 +249,19 @@
 18 \leq edad \leq 29
 \]</span></p>
 <p>Esta condición la podemos expresar mediante la combinación de dos: la edad debe ser mayor igual a 18 y (<strong>AND</strong>, <code>&amp;</code>) la edad debe ser menor o igual que 29</p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">edad</span> <span class="op">&gt;=</span> <span class="fl">18</span> <span class="op">&amp;</span> <span class="va">edad</span> <span class="op">&lt;=</span><span class="fl">29</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Te toca vacunarte"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <pre><code>## [1] "Te toca vacunarte"</code></pre>
 <p><strong>Pregunta</strong>: ¿qué pasaría si se pone un <strong>OR</strong> como unión entre las dos condiciones</p>
-<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">edad</span> <span class="op">&gt;=</span> <span class="fl">18</span> <span class="op">|</span> <span class="va">edad</span> <span class="op">&lt;=</span><span class="fl">29</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Te toca vacunarte"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <pre><code>## [1] "Te toca vacunarte"</code></pre>
 <p>o así (¿es lo mismo?)</p>
-<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb339"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">edad</span> <span class="op">&lt;=</span> <span class="fl">29</span> <span class="op">|</span> <span class="va">edad</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Te toca vacunarte"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
@@ -282,19 +282,19 @@
 <span class="header-section-number">5.4</span> If … else (si … de otro modo)<a class="anchor" aria-label="anchor" href="#if-else-si-de-otro-modo"><i class="fas fa-link"></i></a>
 </h2>
 <p>Si además quieres que se ejecute algo cuando la condición es <strong>falsa</strong> entonces debes usar la declaración <code>if … else</code></p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb337-1"><a href="Estructuras_de_seleccion.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condición) { <span class="co"># Si la condición es cierta</span></span>
-<span id="cb337-2"><a href="Estructuras_de_seleccion.html#cb337-2" aria-hidden="true" tabindex="-1"></a>hace esto</span>
-<span id="cb337-3"><a href="Estructuras_de_seleccion.html#cb337-3" aria-hidden="true" tabindex="-1"></a>y esto</span>
-<span id="cb337-4"><a href="Estructuras_de_seleccion.html#cb337-4" aria-hidden="true" tabindex="-1"></a>y esto</span>
-<span id="cb337-5"><a href="Estructuras_de_seleccion.html#cb337-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> { <span class="co"># De otro modo, es decir si es falsa hace lo que #está en el corchete</span></span>
-<span id="cb337-6"><a href="Estructuras_de_seleccion.html#cb337-6" aria-hidden="true" tabindex="-1"></a>entonces hace esto otro</span>
-<span id="cb337-7"><a href="Estructuras_de_seleccion.html#cb337-7" aria-hidden="true" tabindex="-1"></a>y esto otro</span>
-<span id="cb337-8"><a href="Estructuras_de_seleccion.html#cb337-8" aria-hidden="true" tabindex="-1"></a>y esto</span>
-<span id="cb337-9"><a href="Estructuras_de_seleccion.html#cb337-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb341-1"><a href="Estructuras_de_seleccion.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condición) { <span class="co"># Si la condición es cierta</span></span>
+<span id="cb341-2"><a href="Estructuras_de_seleccion.html#cb341-2" aria-hidden="true" tabindex="-1"></a>hace esto</span>
+<span id="cb341-3"><a href="Estructuras_de_seleccion.html#cb341-3" aria-hidden="true" tabindex="-1"></a>y esto</span>
+<span id="cb341-4"><a href="Estructuras_de_seleccion.html#cb341-4" aria-hidden="true" tabindex="-1"></a>y esto</span>
+<span id="cb341-5"><a href="Estructuras_de_seleccion.html#cb341-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> { <span class="co"># De otro modo, es decir si es falsa hace lo que #está en el corchete</span></span>
+<span id="cb341-6"><a href="Estructuras_de_seleccion.html#cb341-6" aria-hidden="true" tabindex="-1"></a>entonces hace esto otro</span>
+<span id="cb341-7"><a href="Estructuras_de_seleccion.html#cb341-7" aria-hidden="true" tabindex="-1"></a>y esto otro</span>
+<span id="cb341-8"><a href="Estructuras_de_seleccion.html#cb341-8" aria-hidden="true" tabindex="-1"></a>y esto</span>
+<span id="cb341-9"><a href="Estructuras_de_seleccion.html#cb341-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="figure">
 <img src="If_else.001.jpeg" id="id" class="class" style="width:50.0%;height:50.0%" alt=""><p class="caption">Diagrama_if_else</p>
 </div>
-<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">minimo</span><span class="op">&lt;-</span><span class="fl">20000</span></span>
 <span><span class="va">vacaciones</span><span class="op">&lt;-</span><span class="st">"SI"</span></span>
 <span><span class="va">dinero</span><span class="op">&lt;-</span><span class="fl">21000</span></span>
@@ -310,11 +310,11 @@
 <span class="header-section-number">5.5</span> ifelse<a class="anchor" aria-label="anchor" href="#ifelse"><i class="fas fa-link"></i></a>
 </h2>
 <p>Si la condición es muy simple ,tanto para cuando es verdadero como cuando es falso se puede implementar la función <code>ifelse</code> en una línea. Es equivalente a la condición compuesta pero ahorramos código.</p>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edad</span><span class="op">&lt;-</span><span class="fl">21</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">edad</span><span class="op">&gt;=</span><span class="fl">18</span>, <span class="st">"Ya eres grande"</span>,<span class="st">"Todavia no puedes beber (legalmente)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "Ya eres grande"</code></pre>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">edad</span><span class="op">&lt;-</span><span class="fl">12</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">edad</span><span class="op">&gt;=</span><span class="fl">18</span>, <span class="st">"Ya eres grande"</span>,<span class="st">"Todavia no puedes beber (legalmente)"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "Todavia no puedes beber (legalmente)"</code></pre>
@@ -330,19 +330,19 @@
 <p>Esta estructura se ejecuta solo en la primera que sea verdadera o si no hay una verdadera ejecuta lo que esta en el <code>else</code></p>
 </dd>
 </dl>
-<div class="sourceCode" id="cb344"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb344-1"><a href="Estructuras_de_seleccion.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ( condicion <span class="dv">1</span>) {</span>
-<span id="cb344-2"><a href="Estructuras_de_seleccion.html#cb344-2" aria-hidden="true" tabindex="-1"></a>Hace cosas</span>
-<span id="cb344-3"><a href="Estructuras_de_seleccion.html#cb344-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ( condcion <span class="dv">2</span>) {</span>
-<span id="cb344-4"><a href="Estructuras_de_seleccion.html#cb344-4" aria-hidden="true" tabindex="-1"></a>Hace otras cosas</span>
-<span id="cb344-5"><a href="Estructuras_de_seleccion.html#cb344-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ( condicion <span class="dv">3</span>) {</span>
-<span id="cb344-6"><a href="Estructuras_de_seleccion.html#cb344-6" aria-hidden="true" tabindex="-1"></a>Hace estas otras cosas</span>
-<span id="cb344-7"><a href="Estructuras_de_seleccion.html#cb344-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb344-8"><a href="Estructuras_de_seleccion.html#cb344-8" aria-hidden="true" tabindex="-1"></a>No le queda de otra y hace esto</span>
-<span id="cb344-9"><a href="Estructuras_de_seleccion.html#cb344-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb348-1"><a href="Estructuras_de_seleccion.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ( condicion <span class="dv">1</span>) {</span>
+<span id="cb348-2"><a href="Estructuras_de_seleccion.html#cb348-2" aria-hidden="true" tabindex="-1"></a>Hace cosas</span>
+<span id="cb348-3"><a href="Estructuras_de_seleccion.html#cb348-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ( condcion <span class="dv">2</span>) {</span>
+<span id="cb348-4"><a href="Estructuras_de_seleccion.html#cb348-4" aria-hidden="true" tabindex="-1"></a>Hace otras cosas</span>
+<span id="cb348-5"><a href="Estructuras_de_seleccion.html#cb348-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ( condicion <span class="dv">3</span>) {</span>
+<span id="cb348-6"><a href="Estructuras_de_seleccion.html#cb348-6" aria-hidden="true" tabindex="-1"></a>Hace estas otras cosas</span>
+<span id="cb348-7"><a href="Estructuras_de_seleccion.html#cb348-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb348-8"><a href="Estructuras_de_seleccion.html#cb348-8" aria-hidden="true" tabindex="-1"></a>No le queda de otra y hace esto</span>
+<span id="cb348-9"><a href="Estructuras_de_seleccion.html#cb348-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="figure">
 <img src="If_else_else_if.001.jpeg" id="id" class="class" style="width:50.0%;height:50.0%" alt=""><p class="caption">Diagrama de flujo del if… else if… else if…else</p>
 </div>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">numero</span><span class="op">&lt;-</span><span class="fl">3</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="va">numero</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Tu número es positivo"</span><span class="op">)</span></span>
@@ -352,7 +352,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Tu número es cero"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <pre><code>## [1] "Tu número es positivo"</code></pre>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">numero</span><span class="op">&lt;-</span> <span class="op">-</span><span class="fl">27</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="va">numero</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Tu número es positivo"</span><span class="op">)</span></span>
@@ -362,7 +362,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Tu número es cero"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <pre><code>## [1] "Tu número es negativo"</code></pre>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">numero</span><span class="op">&lt;-</span> <span class="fl">0</span></span>
 <span><span class="kw">if</span><span class="op">(</span><span class="va">numero</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"Tu número es positivo"</span><span class="op">)</span></span>
@@ -425,7 +425,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Notas de R</strong>" was written by Roberto Álvarez. It was last built on 2022-08-11.</p>
+    <p>"<strong>Notas de R</strong>" was written by Roberto Álvarez. It was last built on 2022-11-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

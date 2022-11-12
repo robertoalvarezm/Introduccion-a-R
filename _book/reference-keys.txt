@@ -2,7 +2,6 @@ acá-empieza
 intro
 paquetes-o-bibliotecas
 ayuda-en-r
-sesiones-interactivas
 expresiones-y-asignaciones
 movimiento-entre-directorios
 importante

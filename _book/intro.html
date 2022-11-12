@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Introducción a R | Notas de R</title>
 <meta name="author" content="Roberto Álvarez">
-<meta name="description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="description" content="R es un lenguaje de programación. Sin emabrgo es, además, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas...">
+<meta name="generator" content="bookdown 0.30 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Introducción a R | Notas de R">
 <meta property="og:type" content="book">
-<meta property="og:description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
+<meta property="og:description" content="R es un lenguaje de programación. Sin emabrgo es, además, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Introducción a R | Notas de R">
-<meta name="twitter:description" content="R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas del uso de R son:...">
+<meta name="twitter:description" content="R es un lenguaje de programación. Sin emabrgo es, además, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. Las principales ventajas...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -59,7 +59,7 @@
 <h1>
 <span class="header-section-number">2</span> Introducción a R<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
 </h1>
-<p>R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
+<p>R es un lenguaje de programación. Sin emabrgo es, además, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos.
 Las principales ventajas del uso de R son:</p>
 <ol style="list-style-type: decimal">
 <li>Es software libre.</li>
@@ -87,20 +87,21 @@ tu máquina teclea la función library()</p>
 <p>Por ejemplo</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/talgalili/gplots">gplots</a></span><span class="op">)</span>  </span></code></pre></div>
+<pre><code>## Warning: package 'gplots' was built under R version 4.2.2</code></pre>
 <pre><code>## 
 ## Attaching package: 'gplots'</code></pre>
 <pre><code>## The following object is masked from 'package:stats':
 ## 
 ##     lowess</code></pre>
 <p>Para visualizar los paquetes ya cargados tecleamos</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] ".GlobalEnv"        "package:gplots"    "package:stats"    
 ##  [4] "package:graphics"  "package:grDevices" "package:utils"    
 ##  [7] "package:datasets"  "package:methods"   "Autoloads"        
 ## [10] "package:base"</code></pre>
 <p>Para visualizar las funciones dentro de un paquete en particular se utiliza</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "angleAxis"      "balloonplot"    "bandplot"       "barplot2"      
 ##  [5] "bluered"        "boxplot2"       "ci2d"           "col2hex"       
@@ -111,7 +112,7 @@ tu máquina teclea la función library()</p>
 ## [25] "reorder.factor" "residplot"      "rich.colors"    "sinkplot"      
 ## [29] "smartlegend"    "space"          "textplot"       "venn"          
 ## [33] "wapply"</code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/demo.html">demo</a></span><span class="op">(</span><span class="va">graphics</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## 
@@ -334,25 +335,24 @@ tu máquina teclea la función library()</p>
 <span class="header-section-number">2.2</span> Ayuda en R<a class="anchor" aria-label="anchor" href="#ayuda-en-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>help(nombre_comando) o ?nombre_comando</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">solve</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="va">solve</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## starting httpd help server ... done</code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">solve</span></span></code></pre></div>
 <p>son equivalentes para buscar ayuda sobre el comando solve</p>
 <p>Para buscar ayuda de funciones o palabra reservadas se utilizan comillas</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.html">help</a></span><span class="op">(</span><span class="st">"for"</span><span class="op">)</span></span></code></pre></div>
 <p>Para abrir la ayuda genral en un navegador (sólo si tenemos la ayuda en HTML instalada y tenemos conexión a la red) se utiliza</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.start.html">help.start</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## starting httpd help server ... done</code></pre>
-<pre><code>## If the browser launched by '/usr/bin/open' is already running, it is
-##     *not* restarted, and you must switch to its window.
-## Otherwise, be patient ...</code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<pre><code>## If nothing happens, you should open
+## 'http://127.0.0.1:26767/doc/html/index.html' yourself</code></pre>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/help.search.html">help.search</a></span><span class="op">(</span><span class="st">"clustering"</span><span class="op">)</span></span></code></pre></div>
 <p>Si queremos ver ejemplos del uso de los comandos usamos la función ejemplo</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/example.html">example</a></span><span class="op">(</span><span class="st">"hclust"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## hclust&gt; require(graphics)
@@ -415,19 +415,10 @@ tu máquina teclea la función library()</p>
 ## hclust&gt; par(opar)</code></pre>
 <p>Todo lo anterior requiere que conzocamos el nombre correcto del comando, pero ¿qué pasa si no lo sabemos?
 Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html">apropos()</a></code> para encontrar todo lo relacionado con algún término</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/apropos.html">apropos</a></span><span class="op">(</span><span class="st">"solve"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "backsolve"     "forwardsolve"  "qr.solve"      "solve"        
 ## [5] "solve.default" "solve.qr"</code></pre>
-<div id="sesiones-interactivas" class="section level3" number="2.2.1">
-<h3>
-<span class="header-section-number">2.2.1</span> Sesiones interactivas<a class="anchor" aria-label="anchor" href="#sesiones-interactivas"><i class="fas fa-link"></i></a>
-</h3>
-<p>En R también podmeos generar elementos interactivos con la bilioteca <strong>shiny</strong></p>
-<pre><code>## 
-## Listening on http://127.0.0.1:5473</code></pre>
-<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
-</div>
 </div>
 <div id="expresiones-y-asignaciones" class="section level2" number="2.3">
 <h2>
@@ -437,15 +428,15 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 <p><strong>Expresión:</strong></p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##  [1]  0.7979605  1.0878395 -0.6359152  0.4398236  0.8196364  0.1650391
-##  [7] -0.5915663  0.7436936 -0.1450920 -1.1731611</code></pre>
+<pre><code>##  [1] -1.18123340 -0.61160628  0.53738870 -1.66853606  0.47057687 -0.00751886
+##  [7] -2.48520860  0.65904633  0.61403344  0.26469205</code></pre>
 <p><strong>Asignación</strong></p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span></span></code></pre></div>
-<pre><code>##  [1]  0.99989450  2.42087085 -0.51606105 -0.97184273  1.37932604 -0.72765265
-##  [7] -1.08607929  0.03003202 -0.87025071 -2.27234173</code></pre>
+<pre><code>##  [1]  0.74847787 -2.48667537 -0.20937089 -1.42974199 -0.18046051 -0.73352364
+##  [7]  1.46669758 -0.04648163  1.00341140 -1.48825560</code></pre>
 <div class="figure">
 <img src="equals-sign-assignment-operator-imgflip-com-going-through-data-structures-and-47188178.png" alt=""><p class="caption">Operado de asignación. Evitar el uso del igual</p>
 </div>
@@ -469,15 +460,19 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 <p>Para saber en qué directorio estamos tecleamos</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] "/Users/robertoalvarez/Dropbox/UAQ/Bioinformatica/Introduccion-a-R.github.io"</code></pre>
+<pre><code>## [1] "C:/Users/rober/OneDrive - UAQ/Introduccion-a-R.github.io/Introduccion-a-R.github.io"</code></pre>
 <p>Para cambiar de directorio utilizamos <code>setwd("direccion_a_la_que_quieres_ir")</code></p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">setwd</a></span><span class="op">(</span><span class="st">"~"</span><span class="op">)</span></span></code></pre></div>
 <p>También podemos usar los comandos de bash dentro de R, utilizando la función <code><a href="https://rdrr.io/r/base/system.html">system()</a></code></p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"ls -la"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<pre><code>## Warning in system("ls -la"): 'ls' not found</code></pre>
+<pre><code>## [1] 127</code></pre>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">"pwd"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning in system("pwd"): 'pwd' not found</code></pre>
+<pre><code>## [1] 127</code></pre>
 </div>
 <div id="importante" class="section level2" number="2.5">
 <h2>
@@ -491,22 +486,22 @@ Podemos utilizar el comando <code><a href="https://rdrr.io/r/utils/apropos.html"
 </h2>
 <p>Se puede sumar, restar, multiplicar,dividir, “exponenciar” y calcular la raíz cuadrada.
 Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code>, <code>/</code>,<code>**</code> o <code>^</code>, <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code></p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 20.14159</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">-</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 10.14159</code></pre>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">*</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 75.70796</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">**</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 795898.7</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">^</span> <span class="va">b</span></span></code></pre></div>
 <pre><code>## [1] 795898.7</code></pre>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3.89122</code></pre>
 </div>
@@ -544,16 +539,16 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 <span class="header-section-number">2.8</span> Tipos de datos lógicos o booleanos<a class="anchor" aria-label="anchor" href="#tipos-de-datos-l%C3%B3gicos-o-booleanos"><i class="fas fa-link"></i></a>
 </h2>
 <p>Estos tipos de datos <strong>sólo</strong> contienen información <code>TRUE</code> o <code>FALSE</code>. Sirven para evaluar expresiones de =, &lt;, &gt; y pueden utilizarse para obtener los elementos de un vector que cumplan con la característica deseada.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">&lt;</span> <span class="fl">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">==</span> <span class="fl">0</span>  <span class="co"># Es igual a</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">!=</span> <span class="fl">0</span>    <span class="co"># NO es igual a</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">10</span> <span class="op">&lt;=</span> <span class="fl">0</span>    <span class="co">#Menor o igual </span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Dentro de R un valor lógico <code>TRUE</code> equivale a 1 y <code>FALSE</code> equivale a 0, por lo tanto para contar cuántos <code>TRUE</code>s hay podemos hacer una suma:</p>
@@ -563,7 +558,7 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 <span class="header-section-number">2.8.1</span> Caracter<a class="anchor" aria-label="anchor" href="#caracter"><i class="fas fa-link"></i></a>
 </h3>
 <p>Son <em>strings</em> de texto. Se distingue porque los elementos van entre comillas (cada uno). Puede ser desde un sólo caracter hasta oraciones completas. Puede parecer que contienen números, pero las comillaa indican que serán tratados como texto. Podemos subsetearlos por su índice o buscando literalmente el texto.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span><span class="op">&lt;-</span> <span class="st">"La candente mañana de febrero en que Beatriz Viterbo murió, después de una imperiosa agonía que no se rebajó un solo instante ni al sentimentalismo ni al miedo"</span></span></code></pre></div>
 </div>
 <div id="enteros-y-números-numeric" class="section level3" number="2.8.2">
@@ -572,11 +567,11 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 </h3>
 <p>R por default representa los números como <code>numeric</code>, NO <code>integer</code>. Estos tipos son dos formas diferentes en las cuales las computadoras pueden guardar los números y hacer operaciones matemáticas con ellos. Por lo común esto no importa, pero puede ser relevante para algunas funciones de Bioconductor, por ejemplo ya que el tamaño máximo de un <code>integer</code> en R es ligeramente más chico que el tamaño del genoma humano.</p>
 <p>¿Cómo revisar si un objeto es numeric o entero?</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "integer"</code></pre>
@@ -600,9 +595,7 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#intro"><span class="header-section-number">2</span> Introducción a R</a></li>
 <li><a class="nav-link" href="#paquetes-o-bibliotecas"><span class="header-section-number">2.1</span> Paquetes o bibliotecas</a></li>
-<li>
-<a class="nav-link" href="#ayuda-en-r"><span class="header-section-number">2.2</span> Ayuda en R</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#sesiones-interactivas"><span class="header-section-number">2.2.1</span> Sesiones interactivas</a></li></ul>
-</li>
+<li><a class="nav-link" href="#ayuda-en-r"><span class="header-section-number">2.2</span> Ayuda en R</a></li>
 <li><a class="nav-link" href="#expresiones-y-asignaciones"><span class="header-section-number">2.3</span> Expresiones y asignaciones</a></li>
 <li><a class="nav-link" href="#movimiento-entre-directorios"><span class="header-section-number">2.4</span> Movimiento entre directorios</a></li>
 <li><a class="nav-link" href="#importante"><span class="header-section-number">2.5</span> Importante</a></li>
@@ -633,7 +626,7 @@ Los operadores son, respectivamente: <code>+</code>,<code>-</code>,<code>*</code
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Notas de R</strong>" was written by Roberto Álvarez. It was last built on 2022-08-11.</p>
+    <p>"<strong>Notas de R</strong>" was written by Roberto Álvarez. It was last built on 2022-11-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

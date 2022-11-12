@@ -1,14 +1,14 @@
 # Introducción a R {#intro}
-R es un elenguaje de programación. Además es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. 
+R es un lenguaje de programación. Sin embargo es, además entre otras muchas cosas, es un entorno integrado para el manejo de datos, el cálculo, la generación de gráficos y análisis estadísticos. 
 Las principales ventajas del uso de R son:
 
-1. Es software libre.
-2. Su facilidad para el manejo y almacenamiento de datos.
-3. Es un conjunto de operadores para el cálculo de vectores y matrices.
-4. Es una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
-5. Posee un multitud de facilidades gráficas de altísima calidad
-6. Es un lenguaje de programación (muy) poderoso con muchas librerías , bibliotecas más porpiamente dicho,  especializadas disponibles.
-7. La mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
+1. R es software libre.
+2. R se caracteriza por su facilidad para el manejo y almacenamiento de datos.
+3. R es un conjunto de operadores para el cálculo de vectores y matrices.
+4. R es una colección extensa e integrada de herramientas intermedias para el análisis estadístico de datos.
+5. R posee un multitud de facilidades gráficas de altísima calidad
+6. R es un lenguaje de programación (muy) poderoso con múltiples librerías, **bibliotecas** más porpiamente dicho,  especializadas disponibles.
+7. R es la mejor herramienta para trabajar con datos genómicos, proteomicos, redes, metabolómica, entre varias más.
 8. **Casi todos podemos aprender por nuestra cuenta a usar excel (pero hay que pagar por la licencia...), sin embargo es más  díficil aprender por nuestra cuenta R; y si lo hacemos nos da una ventaja sobre el resto.** 
 
 ## Paquetes o bibliotecas
@@ -101,30 +101,7 @@ apropos("solve")
 ```
 
 
-### Sesiones interactivas
 
-En R también podmeos generar elementos interactivos con la bilioteca **shiny**
-
-```{r, echo=FALSE}
-library(shiny)
-shinyApp(
-
-  ui = fluidPage(
-    selectInput("region", "Región:",
-                choices = colnames(WorldPhones)),
-    plotOutput("phonePlot")
-  ),
-
-  server = function(input, output) {
-    output$phonePlot = renderPlot({
-      barplot(WorldPhones[,input$region]*1000,
-              ylab = "Número de líneas telefónicas", xlab = "Año")
-    })
-  },
-
-  options = list(height = 500)
-)
-```
 
 
 ## Expresiones y asignaciones
